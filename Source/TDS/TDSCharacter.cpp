@@ -3,6 +3,7 @@
 #include "TDSCharacter.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Camera/CameraComponent.h"
+#include "Chaos/ChaosGameplayEventDispatcher.h"
 #include "Components/DecalComponent.h"
 #include "Components/CapsuleComponent.h"
 #include "GameFramework/CharacterMovementComponent.h"
@@ -85,4 +86,87 @@ void ATDSCharacter::MovementTick(float DeltaTime)
 		float targetRotationYaw = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), ResultHit.Location).Yaw;
 		SetActorRotation(FQuat(FRotator(0,targetRotationYaw,0)));
 	}
+}
+
+void ATDSCharacter::CharacterUpdate()
+{
+	float ResSpeed = 600.0f;
+	switch (MovementState)
+	{
+	case EMovementState::AimRun_State:
+			ResSpeed = MovementSpeedInfo.AimRunState;
+		break;
+	case EMovementState::AimWalk_State:
+			ResSpeed = MovementSpeedInfo.AimWalkSpeed;
+		break;
+	case EMovementState::Walk_State:
+			ResSpeed = MovementSpeedInfo.WalkSpeed;
+		break;
+	case EMovementState::Run_State:
+			ResSpeed = MovementSpeedInfo.RunSpeed;
+		break;
+	case EMovementState::SptintRun_State:
+			ResSpeed = MovementSpeedInfo.SprintSpeed;
+		break;
+	case EMovementState::Crouch_State:
+			ResSpeed = MovementSpeedInfo.CrouchSpeed;
+		break;
+	case EMovementState::AimCrouch_State:
+			ResSpeed = MovementSpeedInfo.CrouchAimSpeed;
+		break;
+		default:
+			break;
+	}
+	GetCharacterMovement()->MaxWalkSpeed = ResSpeed;
+}
+
+void ATDSCharacter::ChangeMovementState()
+{
+	if (!WalkEnabled && !SprinRunEnabled && !AimEnabled && !CroucnEnabled)
+	{
+		MovementState = EMovementState::Run_State;
+	}
+	else
+	{
+		if (SprinRunEnabled)
+		{
+			WalkEnabled = false;
+			AimEnabled = false;
+			CroucnEnabled = false;
+			MovementState = EMovementState::SptintRun_State;
+		}
+		if (WalkEnabled && !SprinRunEnabled && AimEnabled && !CroucnEnabled)
+		{
+			MovementState = EMovementState::AimWalk_State;
+		}
+		else
+		{
+			if (WalkEnabled && !SprinRunEnabled && !AimEnabled && !CroucnEnabled)
+			{
+				MovementState = EMovementState::Walk_State;
+			}
+			if (!WalkEnabled && !SprinRunEnabled && AimEnabled && !CroucnEnabled)
+			{
+				MovementState = EMovementState::AimRun_State;
+			}
+			else
+			{
+				if (!WalkEnabled && !SprinRunEnabled && !AimEnabled && CroucnEnabled)
+				{
+					SprinRunEnabled = false;
+					WalkEnabled = false;
+					MovementState = EMovementState::Crouch_State;
+				}
+				if (!WalkEnabled && !SprinRunEnabled && AimEnabled && CroucnEnabled)
+				{
+					SprinRunEnabled = false;
+					WalkEnabled = false;
+					MovementState = EMovementState::AimCrouch_State;
+				}
+			}
+		}
+		
+	}
+	//MovementState = NewMovementState;
+	CharacterUpdate();
 }
