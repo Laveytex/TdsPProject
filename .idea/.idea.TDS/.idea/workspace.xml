@@ -6,14 +6,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/BP_TopDownCharacter.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/BP_TopDownCharacter.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/7W/3MR30Q7YNIQA3BT1NWNDLK.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -262,7 +255,8 @@
       <workItem from="1676452425087" duration="2750000" />
       <workItem from="1676462386955" duration="2838000" />
       <workItem from="1676468633727" duration="608000" />
-      <workItem from="1676530735747" duration="7083000" />
+      <workItem from="1676530735747" duration="8554000" />
+      <workItem from="1676884643142" duration="774000" />
     </task>
     <servers />
   </component>
