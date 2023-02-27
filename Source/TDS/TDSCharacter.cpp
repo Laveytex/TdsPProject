@@ -63,6 +63,13 @@ void ATDSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 	
 }
 
+void ATDSCharacter::BeginPlay()
+{
+	Super::BeginPlay();
+
+	CharacterUpdate();
+}
+
 void ATDSCharacter::ImputAxisX(float Value)
 {
 	AxisX = Value;
@@ -122,44 +129,44 @@ void ATDSCharacter::CharacterUpdate()
 
 void ATDSCharacter::ChangeMovementState()
 {
-	if (!WalkEnabled && !SprinRunEnabled && !AimEnabled && !CroucnEnabled)
+	if (!WalkEnabled && !SprintRunEnabled && !AimEnabled && !CroucnEnabled)
 	{
 		MovementState = EMovementState::Run_State;
 	}
 	else
 	{
-		if (SprinRunEnabled)
+		if (SprintRunEnabled)
 		{
 			WalkEnabled = false;
 			AimEnabled = false;
 			CroucnEnabled = false;
 			MovementState = EMovementState::SptintRun_State;
 		}
-		if (WalkEnabled && !SprinRunEnabled && AimEnabled && !CroucnEnabled)
+		if (WalkEnabled && !SprintRunEnabled && AimEnabled && !CroucnEnabled)
 		{
 			MovementState = EMovementState::AimWalk_State;
 		}
 		else
 		{
-			if (WalkEnabled && !SprinRunEnabled && !AimEnabled && !CroucnEnabled)
+			if (WalkEnabled && !SprintRunEnabled && !AimEnabled && !CroucnEnabled)
 			{
 				MovementState = EMovementState::Walk_State;
 			}
-			if (!WalkEnabled && !SprinRunEnabled && AimEnabled && !CroucnEnabled)
+			if (!WalkEnabled && !SprintRunEnabled && AimEnabled && !CroucnEnabled)
 			{
 				MovementState = EMovementState::AimRun_State;
 			}
 			else
 			{
-				if (!WalkEnabled && !SprinRunEnabled && !AimEnabled && CroucnEnabled)
+				if (!WalkEnabled && !SprintRunEnabled && !AimEnabled && CroucnEnabled)
 				{
-					SprinRunEnabled = false;
+					SprintRunEnabled = false;
 					WalkEnabled = false;
 					MovementState = EMovementState::Crouch_State;
 				}
-				if (!WalkEnabled && !SprinRunEnabled && AimEnabled && CroucnEnabled)
+				if (!WalkEnabled && !SprintRunEnabled && AimEnabled && CroucnEnabled)
 				{
-					SprinRunEnabled = false;
+					SprintRunEnabled = false;
 					WalkEnabled = false;
 					MovementState = EMovementState::AimCrouch_State;
 				}
