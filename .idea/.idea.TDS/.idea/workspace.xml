@@ -8,8 +8,53 @@
     <list default="true" id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Explosion.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Explosion.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Fire.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Fire.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Smoke.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Smoke.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Sparks.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Sparks.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Steam.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Steam.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Collapse01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Collapse02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Collapse_Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Explosion01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Explosion02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Explosion_Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Fire01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Fire01_Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Fire_Sparks01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Fire_Sparks01_Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Light01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Light01_Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Light02.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Light02_Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Smoke01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Smoke01_Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Starter_Background_Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Starter_Birds01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Starter_Music01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Starter_Music_Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Starter_Wind05.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Starter_Wind06.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Steam01.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Audio/Steam01_Cue.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Map/TopDownMap.umap" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Map/TopDownMap.umap" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/2/3Y/7D0B79JPVZVDIKX5UJAZR5.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/2/3Y/7D0B79JPVZVDIKX5UJAZR5.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/1J/UJE0H5CXCKWD2TANPWO6Y2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/1J/UJE0H5CXCKWD2TANPWO6Y2.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/ZG/OJ9ELFX80EYWV2V2AT3BT8.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/ZG/OJ9ELFX80EYWV2V2AT3BT8.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/4/KR/DB27XONEK7ICO9Z03Q2RIK.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/4/KR/DB27XONEK7ICO9Z03Q2RIK.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/5/6F/1BUD0FC2B7ULS4KRBHJK88.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/5/MT/TCVWN0Q3YL9N6YYR9L41B4.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/5/MT/TCVWN0Q3YL9N6YYR9L41B4.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/6U/CZUBLGRLCDSXVB03X308QS.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/6U/CZUBLGRLCDSXVB03X308QS.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/N7/SXVA37IYY6Z7DS8ALW4ZAB.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/N7/SXVA37IYY6Z7DS8ALW4ZAB.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/9/YS/NXTRVR7BHN89YE5YTHHJQO.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/9/YS/NXTRVR7BHN89YE5YTHHJQO.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/A/OD/8GHMURGLYTJTKZ328LCV1Y.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/A/OD/8GHMURGLYTJTKZ328LCV1Y.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/B/XS/45R9NJQF07QC6Y5N9UQZJ8.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/B/XS/45R9NJQF07QC6Y5N9UQZJ8.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/D/BL/CTLD3IJXWE25Q7MHOY8597.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/D/BL/CTLD3IJXWE25Q7MHOY8597.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/AU/EST8TA5GPXFCJO0PZIV8MV.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/AU/EST8TA5GPXFCJO0PZIV8MV.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/DQ/64IN40DI7WW2UZZ6MQZEW4.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/DQ/64IN40DI7WW2UZZ6MQZEW4.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/FB/SIE8EQVIL4RCACMG5S6H8E.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/FB/SIE8EQVIL4RCACMG5S6H8E.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/US/HLVZOR10JG3FRRGY79N3C3.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/YY/17DUEI9RZFCR8RGW6J794W.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/YY/17DUEI9RZFCR8RGW6J794W.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -260,7 +305,7 @@
       <workItem from="1676468633727" duration="608000" />
       <workItem from="1676530735747" duration="8554000" />
       <workItem from="1676884643142" duration="774000" />
-      <workItem from="1677488444286" duration="2753000" />
+      <workItem from="1677488444286" duration="5108000" />
     </task>
     <servers />
   </component>
