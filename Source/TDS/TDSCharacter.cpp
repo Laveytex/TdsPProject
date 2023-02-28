@@ -9,6 +9,7 @@
 #include "GameFramework/CharacterMovementComponent.h"
 #include "GameFramework/PlayerController.h"
 #include "GameFramework/SpringArmComponent.h"
+#include "WeaponDefault.h"
 #include "Materials/Material.h"
 #include "Engine/World.h"
 #include "Kismet/GameplayStatics.h"
@@ -52,6 +53,22 @@ void ATDSCharacter::Tick(float DeltaSeconds)
 {
     Super::Tick(DeltaSeconds);
 
+	//Add cursor
+	if(CurrentCursor)
+	{
+		APlayerController* myPC = Cast<APlayerController>(GetController());
+		if(myPC)
+		{
+			FHitResult TraceHitResult;
+			myPC->GetHitResultUnderCursor(ECC_Visibility, true, TraceHitResult);
+			FVector CursorFV = TraceHitResult.ImpactNormal;
+			FRotator CursorR = CursorFV.Rotation();
+
+			CurrentCursor->SetWorldLocation(TraceHitResult.Location);
+			CurrentCursor->SetWorldRotation(CursorR);
+		}
+	}
+
 	MovementTick(DeltaSeconds);
 }
 
@@ -66,6 +83,13 @@ void ATDSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 void ATDSCharacter::BeginPlay()
 {
 	Super::BeginPlay();
+
+	InitWeapon();
+
+	if(CursorMaterial)
+	{
+		CurrentCursor = UGameplayStatics::SpawnDecalAtLocation(GetWorld(), CursorMaterial, CursorSize, FVector(0));
+	}
 
 	CharacterUpdate();
 }
@@ -89,7 +113,9 @@ void ATDSCharacter::MovementTick(float DeltaTime)
 	if(myController)
 	{
 		FHitResult ResultHit;
-		myController->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery6, false, ResultHit);
+		//myController->GetHitResultUnderCursorByChannel(ETraceTypeQuery::TraceTypeQuery6, false, ResultHit);
+		myController->GetHitResultUnderCursor(ECC_GameTraceChannel1, true, ResultHit);
+		
 		float targetRotationYaw = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), ResultHit.Location).Yaw;
 		SetActorRotation(FQuat(FRotator(0,targetRotationYaw,0)));
 	}
@@ -174,6 +200,38 @@ void ATDSCharacter::ChangeMovementState()
 		}
 		
 	}
-	//MovementState = NewMovementState;
 	CharacterUpdate();
+}
+
+AWeaponDefault* ATDSCharacter::GetCurrentWeapon()
+{
+	return CurrentWeapon;
+}
+
+void ATDSCharacter::InitWeapon()
+{
+	if(InitWeaponClass)
+	{
+		FVector SpawnLocation = FVector(0);
+		FRotator SpawnRotation = FRotator(0);
+
+		FActorSpawnParameters SpawnParams;
+		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+		SpawnParams.Owner = GetOwner();
+		SpawnParams.Instigator = GetInstigator();
+
+		AWeaponDefault* myWeapon = Cast<AWeaponDefault>
+		(GetWorld()->SpawnActor(InitWeaponClass, &SpawnLocation, &SpawnRotation, SpawnParams));
+		if(myWeapon)
+		{
+			FAttachmentTransformRules Rule(EAttachmentRule::SnapToTarget, false);
+			myWeapon->AttachToComponent(GetMesh(), Rule, FName("WeaponSocketRightHand"));
+			CurrentWeapon = myWeapon;
+		}
+	}
+}
+
+UDecalComponent* ATDSCharacter::GetCursorToWorld()
+{
+	return CurrentCursor;
 }

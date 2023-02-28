@@ -4,6 +4,7 @@
 
 #include "CoreMinimal.h"
 #include "MainTypes.h"
+#include "WeaponDefault.h"
 #include "GameFramework/Character.h"
 #include "TDSCharacter.generated.h"
 
@@ -24,6 +25,19 @@ public:
 	FORCEINLINE class UCameraComponent* GetTopDownCameraComponent() const { return TopDownCameraComponent; }
 	/** Returns CameraBoom subobject **/
 	FORCEINLINE class USpringArmComponent* GetCameraBoom() const { return CameraBoom; }
+
+	/** Cursor **/
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cursor")
+	UMaterialInterface* CursorMaterial = nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Cursor")
+	FVector CursorSize = FVector(20.0f, 40.0f, 40.0f);
+	UDecalComponent* CurrentCursor = nullptr;
+
+	//Weapon
+	AWeaponDefault* CurrentWeapon = nullptr;
+	//for demo
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Demo")
+	TSubclassOf<AWeaponDefault> InitWeaponClass = nullptr;
 
 private:
 	/** Top down camera */
@@ -67,5 +81,14 @@ public:
 	void CharacterUpdate();
 	UFUNCTION(BlueprintCallable)
 	void ChangeMovementState();
+
+	UFUNCTION(BlueprintCallable)
+	AWeaponDefault* GetCurrentWeapon();
+	UFUNCTION(BlueprintCallable)
+	void InitWeapon();
+
+	UFUNCTION(BlueprintCallable)
+	UDecalComponent* GetCursorToWorld();
+	
 };
 
