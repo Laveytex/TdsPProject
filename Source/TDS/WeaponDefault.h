@@ -5,6 +5,7 @@
 #include "CoreMinimal.h"
 #include "GameFramework/Actor.h"
 #include "Components/ArrowComponent.h"
+
 #include "MainTypes.h"
 #include "ProjectileDefault.h"
 #include "WeaponDefault.generated.h"
@@ -29,6 +30,11 @@ public:
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FireLogic")
 	FWeaponInfo WeaponSetting;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FireLogic")
+	bool WeaponFiring  = false;
+
+	float FireTime = 0.0;
+
 protected:
 	// Called when the game starts or when spawned
 	virtual void BeginPlay() override;
@@ -37,6 +43,20 @@ public:
 	// Called every frame
 	virtual void Tick(float DeltaTime) override;
 
+	void FireTick(float DeltaTime);
+	
 	void WeaponInit();
 
+	UFUNCTION(BlueprintCallable)
+	void SetWeaponStateFire(bool bIsFire);
+	
+	bool CheckWeaponCanFire();
+
+	void Fire();
+
+	FProjectileInfo GetProjectile();
+
+	void UpdateWeaponState(EMovementState NewMovementState);
+	void ChangeDespersion();
+	
 };

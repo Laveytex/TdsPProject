@@ -64,11 +64,16 @@ public:
 	bool AimEnabled = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Movement")
 	bool CroucnEnabled = false;
-	
+
+	//Inputs
 	UFUNCTION()
-	void ImputAxisX(float Value);
+	void InputAxisX(float Value);
 	UFUNCTION()
-	void ImputAxisY(float Value);
+	void InputAxisY(float Value);
+	UFUNCTION()
+	void InputAttackPressed();
+	UFUNCTION()
+	void InputAttackReleased();
 
 	float AxisX = 0.0f;
 	float AxisY = 0.0f;
@@ -77,6 +82,9 @@ public:
 	UFUNCTION()
 	void MovementTick(float DeltaTime);
 
+	//Func
+	UFUNCTION(BlueprintCallable)
+	void AttackCharEvent(bool bIsFiring);
 	UFUNCTION(BlueprintCallable)
 	void CharacterUpdate();
 	UFUNCTION(BlueprintCallable)

@@ -14,6 +14,7 @@ AProjectileDefault::AProjectileDefault()
 	PrimaryActorTick.bCanEverTick = true;
 
 	BulletCollisionSphere = CreateDefaultSubobject<USphereComponent>(TEXT("Collision Sphere"));
+	
 	BulletCollisionSphere->SetSphereRadius(16.f);
 
 	BulletCollisionSphere->OnComponentHit.AddDynamic(this, &AProjectileDefault::BulletCollisionSphereHit);

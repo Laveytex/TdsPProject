@@ -3,6 +3,7 @@
 
 #include "WeaponDefault.h"
 
+
 // Sets default values
 AWeaponDefault::AWeaponDefault()
 {
@@ -32,13 +33,24 @@ void AWeaponDefault::BeginPlay()
 	Super::BeginPlay();
 
 	WeaponInit();
-	
 }
 
 // Called every frame
 void AWeaponDefault::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
+
+	FireTick(DeltaTime);
+
+}
+
+void AWeaponDefault::FireTick(float DeltaTime)
+{
+	if (WeaponFiring)
+		if (FireTime < 0.f)
+			Fire();
+	else
+		FireTime -=DeltaTime;
 
 }
 
@@ -53,5 +65,61 @@ void AWeaponDefault::WeaponInit()
 	{
 		StaticMeshWeapon->DestroyComponent(true);
 	}
+}
+
+void AWeaponDefault::SetWeaponStateFire(bool bIsFire)
+{
+		if (CheckWeaponCanFire())
+			WeaponFiring = bIsFire;
+		else
+			WeaponFiring = false;
+}
+
+bool AWeaponDefault::CheckWeaponCanFire()
+{
+	return true; 
+}
+
+void AWeaponDefault::Fire()
+{
+	FireTime = WeaponSetting. RateOfFire;
+
+	if(ShootLocation)
+	{
+		FVector SpawnLocation = ShootLocation->GetComponentLocation();
+		FRotator SpawnRotation = ShootLocation->GetComponentRotation();
+		FProjectileInfo ProjectileInfo;
+		ProjectileInfo = GetProjectile();
+
+		if (ProjectileInfo.Projectile)
+		{
+			FActorSpawnParameters SpawnParametrs;
+			SpawnParametrs.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+			SpawnParametrs.Owner = GetOwner();
+			SpawnParametrs.Instigator = GetInstigator();
+
+			AProjectileDefault* myProjectile = Cast<AProjectileDefault>
+			(GetWorld()->SpawnActor(ProjectileInfo.Projectile, &SpawnLocation, &SpawnRotation, SpawnParametrs));
+			if(myProjectile)
+			{
+				myProjectile->InitialLifeSpan = 20.0f;
+			}
+		}
+
+	}
+}
+
+FProjectileInfo AWeaponDefault::GetProjectile()
+{
+	return WeaponSetting.ProjectileSetting;
+}
+
+void AWeaponDefault::UpdateWeaponState(EMovementState NewMovementState)
+{
+	ChangeDespersion();
+}
+
+void AWeaponDefault::ChangeDespersion()
+{
 }
 

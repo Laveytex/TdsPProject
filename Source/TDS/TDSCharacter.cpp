@@ -75,9 +75,13 @@ void ATDSCharacter::Tick(float DeltaSeconds)
 void ATDSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATDSCharacter::ImputAxisX);
-	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &ATDSCharacter::ImputAxisY);
-	
+	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATDSCharacter::InputAxisX);
+	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &ATDSCharacter::InputAxisY);
+
+	PlayerInputComponent->BindAction(TEXT("FireEvent"),
+		EInputEvent::IE_Pressed, this, &ATDSCharacter::InputAttackPressed);
+	PlayerInputComponent->BindAction(TEXT("FireEvent"),
+		EInputEvent::IE_Released, this, &ATDSCharacter::InputAttackReleased);
 }
 
 void ATDSCharacter::BeginPlay()
@@ -94,14 +98,37 @@ void ATDSCharacter::BeginPlay()
 	CharacterUpdate();
 }
 
-void ATDSCharacter::ImputAxisX(float Value)
+void ATDSCharacter::InputAxisX(float Value)
 {
 	AxisX = Value;
 }
 
-void ATDSCharacter::ImputAxisY(float Value)
+void ATDSCharacter::InputAxisY(float Value)
 {
 	AxisY = Value;
+}
+
+void ATDSCharacter::InputAttackPressed()
+{
+	AttackCharEvent(true);
+}
+
+void ATDSCharacter::InputAttackReleased()
+{
+	AttackCharEvent(false);
+}
+
+void ATDSCharacter::AttackCharEvent(bool bIsFiring)
+{
+	AWeaponDefault* myWeapon = nullptr;
+	myWeapon = GetCurrentWeapon();
+	if(myWeapon)
+	{
+		myWeapon->SetWeaponStateFire(bIsFiring);
+	}
+	else
+		UE_LOG(LogTemp, Warning, TEXT("TDSCharacter::AttackCharEvent - CurrWeapon - NULL"));
+	
 }
 
 void ATDSCharacter::MovementTick(float DeltaTime)
@@ -201,6 +228,13 @@ void ATDSCharacter::ChangeMovementState()
 		
 	}
 	CharacterUpdate();
+
+	//Weapon state update
+	AWeaponDefault* myWeapon = GetCurrentWeapon();
+	if (myWeapon)
+	{
+		myWeapon->UpdateWeaponState(MovementState);
+	}
 }
 
 AWeaponDefault* ATDSCharacter::GetCurrentWeapon()
@@ -227,6 +261,8 @@ void ATDSCharacter::InitWeapon()
 			FAttachmentTransformRules Rule(EAttachmentRule::SnapToTarget, false);
 			myWeapon->AttachToComponent(GetMesh(), Rule, FName("WeaponSocketRightHand"));
 			CurrentWeapon = myWeapon;
+
+			myWeapon->UpdateWeaponState(MovementState);
 		}
 	}
 }
