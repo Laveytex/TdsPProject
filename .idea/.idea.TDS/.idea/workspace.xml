@@ -5,25 +5,16 @@
     <projectFile>Intermediate/ProjectFiles/TDS.vcxproj</projectFile>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="">
+    <list default="true" id="848a07d2-70c5-4e4f-90ef-16a1f0f3e12c" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/TDS/TDSGameInstance.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TDS/TDSGameInstance.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/encodings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/Mannequins/Meshes/SK_Mannequin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/Mannequins/Meshes/SK_Mannequin.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/InteractiveEnvirament/BP_Trap_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/InteractiveEnvirament/BP_Trap_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/BP_ProjectileDefoult.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_ProjectileDefoult.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/BP_WeaponDefault_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_WeaponDefault_Rifle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/2/3Y/7D0B79JPVZVDIKX5UJAZR5.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/2/3Y/7D0B79JPVZVDIKX5UJAZR5.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/1J/UJE0H5CXCKWD2TANPWO6Y2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/1J/UJE0H5CXCKWD2TANPWO6Y2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/ZG/OJ9ELFX80EYWV2V2AT3BT8.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/4/KR/DB27XONEK7ICO9Z03Q2RIK.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/4/KR/DB27XONEK7ICO9Z03Q2RIK.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/5/MT/TCVWN0Q3YL9N6YYR9L41B4.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/5/MT/TCVWN0Q3YL9N6YYR9L41B4.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/WL/262BDHA66ZPHG6SC6N4B2E.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/WL/262BDHA66ZPHG6SC6N4B2E.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/CN/YBITCDVYM4MUHPBJMYLFQM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/CN/YBITCDVYM4MUHPBJMYLFQM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/YP/7ETCEODYKDE8MSDGJUOBLM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/YP/7ETCEODYKDE8MSDGJUOBLM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/B/XS/45R9NJQF07QC6Y5N9UQZJ8.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/B/XS/45R9NJQF07QC6Y5N9UQZJ8.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/YY/17DUEI9RZFCR8RGW6J794W.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/YY/17DUEI9RZFCR8RGW6J794W.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Blueprints/Blueprint_CeilingLight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Blueprints/Blueprint_CeilingLight.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Particles/P_Ambient_Dust.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Particles/P_Ambient_Dust.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Platforms/HoloLens/Config/HoloLensEngine.ini" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TDS/MainTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/MainTypes.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" afterDir="false" />
@@ -34,34 +25,22 @@
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/TDS/ProjectileDefault.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/TDS/WeaponDefault.h" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/TDS/WorldItemDefault.cpp" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Source/TDS/WorldItemDefault.h" root0="FORCE_HIGHLIGHTING" />
-  </component>
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="2Llj7cOOHMU8YxBF8l8DIiGf2qB" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
-    <ConfirmationsSetting value="2" id="Add" />
-  </component>
+  <component name="ProjectId" id="2MeOQrxWDcLTQT9xxTYxO2HlbeH" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="C++ Project.TDS">
     <configuration name="TDS" type="CppProject" factoryName="C++ Project">
       <configuration_1>
@@ -279,23 +258,12 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="" />
-      <created>1676452399023</created>
+      <changelist id="848a07d2-70c5-4e4f-90ef-16a1f0f3e12c" name="Changes" comment="" />
+      <created>1678124569122</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1676452399023</updated>
-      <workItem from="1676452425087" duration="2750000" />
-      <workItem from="1676462386955" duration="2838000" />
-      <workItem from="1676468633727" duration="608000" />
-      <workItem from="1676530735747" duration="8554000" />
-      <workItem from="1676884643142" duration="774000" />
-      <workItem from="1677488444286" duration="6593000" />
-      <workItem from="1677573469187" duration="1035000" />
-      <workItem from="1677582156787" duration="8137000" />
-      <workItem from="1677591616961" duration="4783000" />
-      <workItem from="1677832182530" duration="998000" />
-      <workItem from="1677834709419" duration="8298000" />
-      <workItem from="1677847069296" duration="661000" />
+      <updated>1678124569122</updated>
+      <workItem from="1678124590235" duration="688000" />
     </task>
     <servers />
   </component>
@@ -304,19 +272,7 @@
   </component>
   <component name="UnityCheckinConfiguration" checkUnsavedScenes="true" />
   <component name="UnityUnitTestConfiguration" currentTestLauncher="NUnit" />
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
   <component name="VcsManagerConfiguration">
-    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
   </component>
 </project>
