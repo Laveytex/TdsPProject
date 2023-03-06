@@ -6,28 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Source/TDS/TDSGameInstance.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Source/TDS/TDSGameInstance.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultInput.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultInput.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/Mannequins/Meshes/SK_Mannequin.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/Mannequins/Meshes/SK_Mannequin.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/InteractiveEnvirament/BP_Trap_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/InteractiveEnvirament/BP_Trap_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/BP_ProjectileDefoult.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_ProjectileDefoult.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/BP_WeaponDefault_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_WeaponDefault_Rifle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/2/3Y/7D0B79JPVZVDIKX5UJAZR5.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/2/3Y/7D0B79JPVZVDIKX5UJAZR5.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/1J/UJE0H5CXCKWD2TANPWO6Y2.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/1J/UJE0H5CXCKWD2TANPWO6Y2.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/ZG/OJ9ELFX80EYWV2V2AT3BT8.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/4/KR/DB27XONEK7ICO9Z03Q2RIK.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/4/KR/DB27XONEK7ICO9Z03Q2RIK.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/5/MT/TCVWN0Q3YL9N6YYR9L41B4.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/5/MT/TCVWN0Q3YL9N6YYR9L41B4.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/WL/262BDHA66ZPHG6SC6N4B2E.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/WL/262BDHA66ZPHG6SC6N4B2E.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/CN/YBITCDVYM4MUHPBJMYLFQM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/CN/YBITCDVYM4MUHPBJMYLFQM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/YP/7ETCEODYKDE8MSDGJUOBLM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/YP/7ETCEODYKDE8MSDGJUOBLM.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/B/XS/45R9NJQF07QC6Y5N9UQZJ8.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/B/XS/45R9NJQF07QC6Y5N9UQZJ8.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/YY/17DUEI9RZFCR8RGW6J794W.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/YY/17DUEI9RZFCR8RGW6J794W.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/WeaponDefault.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/WeaponDefault.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/HDRI/HDRI_Epic_Courtyard_Daylight.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/StarterContent/Particles/P_Ambient_Dust.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/StarterContent/Particles/P_Ambient_Dust.uasset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -37,6 +20,8 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TDS/ProjectileDefault.h" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TDS/TDSGameInstance.cpp" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Source/TDS/TDSGameInstance.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TDS/WeaponDefault.h" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Source/TDS/WorldItemDefault.cpp" root0="FORCE_HIGHLIGHTING" />
@@ -164,6 +149,16 @@
         <option name="PASS_PARENT_ENVS" value="1" />
         <option name="USE_EXTERNAL_CONSOLE" value="0" />
       </configuration_10>
+      <configuration_11>
+        <option name="CONFIGURATION" value="" />
+        <option name="PLATFORM" value="" />
+        <option name="PROJECT_FILE_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/TDS.vcxproj" />
+        <option name="EXE_PATH" value="$(TargetPath)" />
+        <option name="PROGRAM_PARAMETERS" value="" />
+        <option name="WORKING_DIRECTORY" value="$(ProjectDir)" />
+        <option name="PASS_PARENT_ENVS" value="1" />
+        <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      </configuration_11>
       <option name="DEFAULT_PROJECT_PATH" value="$PROJECT_DIR$/Intermediate/ProjectFiles/TDS.vcxproj" />
       <method v="2">
         <option name="Build" />
@@ -296,6 +291,7 @@
       <workItem from="1677832182530" duration="998000" />
       <workItem from="1677834709419" duration="8298000" />
       <workItem from="1677847069296" duration="661000" />
+      <workItem from="1678127536600" duration="384000" />
     </task>
     <servers />
   </component>
