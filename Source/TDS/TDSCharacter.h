@@ -37,7 +37,7 @@ public:
 	AWeaponDefault* CurrentWeapon = nullptr;
 	//for demo
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Demo")
-	TSubclassOf<AWeaponDefault> InitWeaponClass = nullptr;
+	FName InitWeaponName;
 
 private:
 	/** Top down camera */
@@ -93,7 +93,9 @@ public:
 	UFUNCTION(BlueprintCallable)
 	AWeaponDefault* GetCurrentWeapon();
 	UFUNCTION(BlueprintCallable)
-	void InitWeapon();
+	void InitWeapon(FName IDWeaponName);
+	UFUNCTION(BlueprintCallable)
+	void TryReloadWeapon();
 
 	UFUNCTION(BlueprintCallable)
 	UDecalComponent* GetCursorToWorld();

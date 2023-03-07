@@ -1,6 +1,8 @@
 // Copyright Epic Games, Inc. All Rights Reserved.
 
 #include "TDSCharacter.h"
+
+#include "TDSGameInstance.h"
 #include "UObject/ConstructorHelpers.h"
 #include "Camera/CameraComponent.h"
 #include "Chaos/ChaosGameplayEventDispatcher.h"
@@ -75,6 +77,7 @@ void ATDSCharacter::Tick(float DeltaSeconds)
 void ATDSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
+	
 	PlayerInputComponent->BindAxis(TEXT("MoveForward"), this, &ATDSCharacter::InputAxisX);
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &ATDSCharacter::InputAxisY);
 
@@ -82,13 +85,16 @@ void ATDSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompon
 		EInputEvent::IE_Pressed, this, &ATDSCharacter::InputAttackPressed);
 	PlayerInputComponent->BindAction(TEXT("FireEvent"),
 		EInputEvent::IE_Released, this, &ATDSCharacter::InputAttackReleased);
+	PlayerInputComponent->BindAction(TEXT("ReloadEvent"),
+		EInputEvent::IE_Pressed, this, &ATDSCharacter::TryReloadWeapon);
+	
 }
 
 void ATDSCharacter::BeginPlay()
 {
 	Super::BeginPlay();
 
-	InitWeapon();
+	InitWeapon(InitWeaponName);
 
 	if(CursorMaterial)
 	{
@@ -144,8 +150,38 @@ void ATDSCharacter::MovementTick(float DeltaTime)
 		myController->GetHitResultUnderCursor(ECC_GameTraceChannel1, true, ResultHit);
 		
 		float targetRotationYaw = UKismetMathLibrary::FindLookAtRotation(GetActorLocation(), ResultHit.Location).Yaw;
-		SetActorRotation(FQuat(FRotator(0,targetRotationYaw,0)));
+		SetActorRotation(FQuat(FRotator(0.0f,targetRotationYaw,0.0f)));
+
+		if(CurrentWeapon)
+		{
+			FVector Displacment = FVector(0);
+			switch (MovementState)
+			{
+			case EMovementState::AimWalk_State:
+				Displacment = FVector(0.0f,0.0f,160.0f);
+				break;
+			case EMovementState::AimRun_State:
+				Displacment = FVector(0.0f,0.0f,160.0f);
+				break;
+			case EMovementState::Walk_State:
+				Displacment = FVector(0.0f,0.0f,120.0f);
+				break;
+			case EMovementState::Run_State:
+				Displacment = FVector(0.0f,0.0f,120.0f);
+				break;
+			case EMovementState::SptintRun_State:
+				break;
+			default:
+				break;
+			}
+			CurrentWeapon->ShootEndLocation = ResultHit.Location + Displacment;
+		}
 	}
+	if (CurrentWeapon)
+		if (FMath::IsNearlyZero(GetVelocity().Size(), 0.5f))
+			CurrentWeapon->ShouldReduceDispersion = true;
+		else
+			CurrentWeapon->ShouldReduceDispersion = false;
 }
 
 void ATDSCharacter::CharacterUpdate()
@@ -242,29 +278,58 @@ AWeaponDefault* ATDSCharacter::GetCurrentWeapon()
 	return CurrentWeapon;
 }
 
-void ATDSCharacter::InitWeapon()
+void ATDSCharacter::InitWeapon(FName IDWeaponName)
 {
-	if(InitWeaponClass)
+	UTDSGameInstance* myGI = Cast<UTDSGameInstance>(GetGameInstance());
+	FWeaponInfo myWeaponInfo;
+	if (myGI)
 	{
-		FVector SpawnLocation = FVector(0);
-		FRotator SpawnRotation = FRotator(0);
-
-		FActorSpawnParameters SpawnParams;
-		SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-		SpawnParams.Owner = GetOwner();
-		SpawnParams.Instigator = GetInstigator();
-
-		AWeaponDefault* myWeapon = Cast<AWeaponDefault>
-		(GetWorld()->SpawnActor(InitWeaponClass, &SpawnLocation, &SpawnRotation, SpawnParams));
-		if(myWeapon)
+		if(myGI->GetWeaponInfoByName(IDWeaponName, myWeaponInfo))
 		{
-			FAttachmentTransformRules Rule(EAttachmentRule::SnapToTarget, false);
-			myWeapon->AttachToComponent(GetMesh(), Rule, FName("WeaponSocketRightHand"));
-			CurrentWeapon = myWeapon;
+			if(myWeaponInfo.WeaponClass)
+			{
+				FVector SpawnLocation = FVector(0);
+				FRotator SpawnRotation = FRotator(0);
 
-			myWeapon->UpdateWeaponState(MovementState);
+				FActorSpawnParameters SpawnParams;
+				SpawnParams.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+				SpawnParams.Owner = GetOwner();
+				SpawnParams.Instigator = GetInstigator();
+
+				AWeaponDefault* myWeapon = Cast<AWeaponDefault>
+				(GetWorld()->SpawnActor(myWeaponInfo.WeaponClass, &SpawnLocation, &SpawnRotation, SpawnParams));
+				if(myWeapon)
+				{
+					FAttachmentTransformRules Rule(EAttachmentRule::SnapToTarget, false);
+					myWeapon->AttachToComponent(GetMesh(), Rule, FName("WeaponSocketRightHand"));
+					CurrentWeapon = myWeapon;
+
+					myWeapon->WeaponSetting = myWeaponInfo;
+					myWeapon->WeaponInfo.Round = myWeaponInfo.MaxRound;
+					//Debug
+					myWeapon->ReloadTime = myWeaponInfo.ReloadTime;
+					myWeapon->UpdateWeaponState(MovementState);
+				}
+			}
+			else
+			{
+				UE_LOG(LogTemp, Warning, TEXT("TDSCharacter::InitWeapon - Weapon not found in table"));
+			}
 		}
 	}
+	
+}
+
+void ATDSCharacter::TryReloadWeapon()
+{
+	if (CurrentWeapon)
+	{
+		if (CurrentWeapon->GetWeaponRound() <= CurrentWeapon->WeaponSetting.MaxRound)
+		{
+			CurrentWeapon->InitReload();
+		}
+	}
+	
 }
 
 UDecalComponent* ATDSCharacter::GetCursorToWorld()

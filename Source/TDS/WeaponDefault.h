@@ -28,12 +28,26 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Components)
 	class UArrowComponent* ShootLocation = nullptr;
 
-	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FireLogic")
+	UPROPERTY()
 	FWeaponInfo WeaponSetting;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Info")
+	FAddicionalWeaponInfo WeaponInfo;
+	
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FireLogic")
 	bool WeaponFiring  = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ReloadLogic")
+	bool WeaponReloading = false;
 
-	float FireTime = 0.0;
+	//Timer`s flag
+	float FireTimer = 0.0;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ReloadLogic")
+	float ReloadTimer = 0.0f;
+	
+	//Debug
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ReloadLogic Dedug")
+	float ReloadTime = 0.0f;
+	
 
 protected:
 	// Called when the game starts or when spawned
@@ -44,6 +58,8 @@ public:
 	virtual void Tick(float DeltaTime) override;
 
 	void FireTick(float DeltaTime);
+	void ReloadTick(float DeltaTime);
+	void DispersionTick(float DeltaTime);
 	
 	void WeaponInit();
 
@@ -57,6 +73,35 @@ public:
 	FProjectileInfo GetProjectile();
 
 	void UpdateWeaponState(EMovementState NewMovementState);
-	void ChangeDespersion();
+	void ChangeDespersionByShot();
+	float GetCurrentDispersion() const;
+	FVector ApplyDispersionToShoot(FVector DirectionShoot) const;
+
+	FVector GetFireEndLocation() const;
+	int8 GetNumberProjectileByShoot();
+
+	bool BlockFire = false;
+	
+	//Dispersion
+	bool ShouldReduceDispersion = false;
+	
+	float CurrentDispersion = 0.0f;
+	float CurrentDispersionMax = 1.0f;
+	float CurrentDispersionMin = 0.1f;
+	float CurrentDispersionRecoil = 0.1f;
+	float CurrentDispersionReduction = 0.1f;
+
+	FVector ShootEndLocation = FVector(0);
+	
+	UFUNCTION(BlueprintCallable)
+	int32 GetWeaponRound();
+	
+	void InitReload();
+	void FinishReload();
+
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
+	bool ShowDebug = false;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
+	float SizeVectorToChangeShootDirection = 100.0f;
 	
 };
