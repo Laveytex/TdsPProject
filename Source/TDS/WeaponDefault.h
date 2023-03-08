@@ -78,7 +78,7 @@ public:
 	FVector ApplyDispersionToShoot(FVector DirectionShoot) const;
 
 	FVector GetFireEndLocation() const;
-	int8 GetNumberProjectileByShoot();
+	int8 GetNumberProjectileByShoot() const;
 
 	bool BlockFire = false;
 	

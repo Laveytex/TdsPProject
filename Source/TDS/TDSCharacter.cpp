@@ -159,15 +159,19 @@ void ATDSCharacter::MovementTick(float DeltaTime)
 			{
 			case EMovementState::AimWalk_State:
 				Displacment = FVector(0.0f,0.0f,160.0f);
+				CurrentWeapon->ShouldReduceDispersion = true;
 				break;
 			case EMovementState::AimRun_State:
 				Displacment = FVector(0.0f,0.0f,160.0f);
+				CurrentWeapon->ShouldReduceDispersion = true;
 				break;
 			case EMovementState::Walk_State:
 				Displacment = FVector(0.0f,0.0f,120.0f);
+				CurrentWeapon->ShouldReduceDispersion = false;
 				break;
 			case EMovementState::Run_State:
 				Displacment = FVector(0.0f,0.0f,120.0f);
+				CurrentWeapon->ShouldReduceDispersion = false;
 				break;
 			case EMovementState::SptintRun_State:
 				break;

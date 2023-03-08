@@ -145,6 +145,11 @@ void AWeaponDefault::Fire()
 	FireTimer = WeaponSetting. RateOfFire;
 	WeaponInfo.Round--;
 	ChangeDespersionByShot();
+
+	UGameplayStatics::SpawnSoundAtLocation(GetWorld(), WeaponSetting.SoundFireWeapon, ShootLocation->GetComponentLocation());
+	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), WeaponSetting.EffectFireWeapon, ShootLocation->GetComponentLocation(),FRotator(ShootLocation->GetComponentRotation()));
+	
+	int8 NumberProjectile = GetNumberProjectileByShoot();
 	
 	if(ShootLocation)
 	{
@@ -152,30 +157,37 @@ void AWeaponDefault::Fire()
 		FRotator SpawnRotation = ShootLocation->GetComponentRotation();
 		FProjectileInfo ProjectileInfo;
 		ProjectileInfo = GetProjectile();
-		
-		FVector Dir = GetFireEndLocation() - SpawnLocation;
 
-		Dir.Normalize();
-		FMatrix myMatrix(Dir, FVector(0,1,0),FVector(0,0,1), FVector::ZeroVector);
-		SpawnRotation = myMatrix.Rotator();
-
-		if (ProjectileInfo.Projectile)
+		FVector EndLocation;
+		for (int8 i=0;i<NumberProjectile; i++)
 		{
-			FActorSpawnParameters SpawnParametrs;
-			SpawnParametrs.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-			SpawnParametrs.Owner = GetOwner();
-			SpawnParametrs.Instigator = GetInstigator();
+			EndLocation = GetFireEndLocation();
+			
+			FVector Dir = GetFireEndLocation() - SpawnLocation;
 
-	
+			Dir.Normalize();
+			FMatrix myMatrix(Dir, FVector(0,1,0),FVector(0,0,1), FVector::ZeroVector);
+			SpawnRotation = myMatrix.Rotator();
 
-			AProjectileDefault* myProjectile = Cast<AProjectileDefault>
-			(GetWorld()->SpawnActor(ProjectileInfo.Projectile, &SpawnLocation, &SpawnRotation, SpawnParametrs));
-			if(myProjectile)
+			if (ProjectileInfo.Projectile)
 			{
-				myProjectile->InitialLifeSpan = 20.0f;
+				FActorSpawnParameters SpawnParametrs;
+				SpawnParametrs.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+				SpawnParametrs.Owner = GetOwner();
+				SpawnParametrs.Instigator = GetInstigator();
+				
+				AProjectileDefault* myProjectile = Cast<AProjectileDefault>
+				(GetWorld()->SpawnActor(ProjectileInfo.Projectile, &SpawnLocation, &SpawnRotation, SpawnParametrs));
+				if(myProjectile)
+				{
+					myProjectile->InitialLifeSpan = 20.0f;
+				}
+			}
+			else
+			{
+				
 			}
 		}
-
 	}
 }
 
@@ -287,9 +299,9 @@ FVector tmpV = (ShootLocation->GetComponentLocation() - ShootEndLocation);
 	return EndLocation;
 }
 
-int8 AWeaponDefault::GetNumberProjectileByShoot()
+int8 AWeaponDefault::GetNumberProjectileByShoot() const
 {
-	return 1;
+	return WeaponSetting.NumberProjectileByShot;
 }
 
 int32 AWeaponDefault::GetWeaponRound()
