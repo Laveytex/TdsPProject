@@ -83,7 +83,7 @@ void AWeaponDefault::ReloadTick(float DeltaTime)
 	if(WeaponReloading)
 	{
 		if(ReloadTimer < 0.0f)
-		{
+		{			
 			FinishReload();
 		}
 		else
@@ -340,6 +340,7 @@ void AWeaponDefault::MagazineSpawn()
 		UStaticMeshComponent* comp = SpawnedMagazine->GetStaticMeshComponent();
 		comp->SetStaticMesh(WeaponSetting.MagazineDrop);
 		comp->SetSimulatePhysics(true);
+		comp->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECR_Ignore);
 	}
 }
 
@@ -363,28 +364,33 @@ void AWeaponDefault::SleeveBulletsSpawn()
 		SleevBullet->SetMobility(EComponentMobility::Movable);
 		SleevBullet->InitialLifeSpan = 1.0f;
 		SleevBullet->SetActorEnableCollision(true);
+		
 		UStaticMeshComponent* comp = SleevBullet->GetStaticMeshComponent();
 		if (comp)
 		{
 			comp->SetStaticMesh(WeaponSetting.SleeveBullets);
 			comp->SetSimulatePhysics(true);
 			comp->AddImpulse(ForwardVector * ImpulstMultiply);
-			//comp->SetCollisionProfileName(FName )
+			comp->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECR_Ignore);
 		}
 	}
 }
 
 void AWeaponDefault::InitReload()
 {
-	WeaponReloading = true;
-
-	if(WeaponSetting.MagazineDrop)
-		MagazineSpawn();
-	
-	ReloadTimer = WeaponSetting.ReloadTime;
-	
 	if (WeaponSetting.AnimCharReload)
 		OnWeaponReloadStart.Broadcast(WeaponSetting.AnimCharReload);
+	
+		if (WeaponReloading == false)
+		{
+			ReloadTimer = WeaponSetting.ReloadTime;
+			
+			if(WeaponSetting.MagazineDrop)
+			{
+				MagazineSpawn();
+			}
+		}
+	WeaponReloading = true;
 }
 
 void AWeaponDefault::FinishReload()
