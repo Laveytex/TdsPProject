@@ -10,6 +10,9 @@
 #include "ProjectileDefault.h"
 #include "WeaponDefault.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWeaponReloadStart, UAnimMontage*, Anim);
+DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnWeaponReloadEnd);
+
 UCLASS()
 class TDS_API AWeaponDefault : public AActor
 {
@@ -19,6 +22,9 @@ public:
 	// Sets default values for this actor's properties
 	AWeaponDefault();
 
+	FOnWeaponReloadStart OnWeaponReloadStart;
+	FOnWeaponReloadEnd OnWeaponReloadEnd;
+
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Components)
 	class USceneComponent* SceneComponent = nullptr;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Components)
@@ -27,6 +33,10 @@ public:
 	class UStaticMeshComponent* StaticMeshWeapon = nullptr;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Components)
 	class UArrowComponent* ShootLocation = nullptr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Components)
+	class UArrowComponent* MagazineSpawnPoint = nullptr;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Components)
+	class UArrowComponent* SleevBulletSpawnPoint = nullptr;
 
 	UPROPERTY()
 	FWeaponInfo WeaponSetting;
@@ -95,6 +105,9 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	int32 GetWeaponRound();
+
+	void MagazineSpawn();
+	void SleeveBulletsSpawn();
 	
 	void InitReload();
 	void FinishReload();

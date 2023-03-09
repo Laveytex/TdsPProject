@@ -3,9 +3,12 @@
 
 #include "WeaponDefault.h"
 #include "DrawDebugHelpers.h"
+#include "MainTypes.h"
+#include "Engine/StaticMeshActor.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/GameplayStatics.h"
 
+class AStaticMeshActor;
 // Sets default values
 AWeaponDefault::AWeaponDefault()
 {
@@ -27,6 +30,12 @@ AWeaponDefault::AWeaponDefault()
 
 	ShootLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("ShootLocation"));
 	ShootLocation->SetupAttachment(RootComponent);
+
+	MagazineSpawnPoint = CreateDefaultSubobject<UArrowComponent>(TEXT("Magazin point"));
+	MagazineSpawnPoint->SetupAttachment(RootComponent);
+	
+	SleevBulletSpawnPoint = CreateDefaultSubobject<UArrowComponent>(TEXT("SleevBullet point"));
+	SleevBulletSpawnPoint->SetupAttachment(RootComponent);
 }
 
 // Called when the game starts or when spawned
@@ -144,6 +153,10 @@ void AWeaponDefault::Fire()
 {
 	FireTimer = WeaponSetting. RateOfFire;
 	WeaponInfo.Round--;
+	//chek here or in function?
+	if(WeaponSetting.SleeveBullets)
+		SleeveBulletsSpawn();
+	
 	ChangeDespersionByShot();
 
 	UGameplayStatics::SpawnSoundAtLocation(GetWorld(), WeaponSetting.SoundFireWeapon, ShootLocation->GetComponentLocation());
@@ -309,16 +322,76 @@ int32 AWeaponDefault::GetWeaponRound()
 	return WeaponInfo.Round;
 }
 
+void AWeaponDefault::MagazineSpawn()
+{
+	FActorSpawnParameters SpawnParametrs;
+	SpawnParametrs.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	SpawnParametrs.Owner = GetOwner();
+	SpawnParametrs.Instigator = GetInstigator();
+	
+	FVector SpawnLocation = MagazineSpawnPoint->GetComponentLocation();
+	FRotator SpawnRotation = MagazineSpawnPoint->GetComponentRotation();
+	
+	AStaticMeshActor* SpawnedMagazine = (GetWorld()->SpawnActor<AStaticMeshActor>
+		(AStaticMeshActor::StaticClass(), SpawnLocation, SpawnRotation, SpawnParametrs));
+	if (SpawnedMagazine)
+	{
+		SpawnedMagazine->SetMobility(EComponentMobility::Movable);
+		UStaticMeshComponent* comp = SpawnedMagazine->GetStaticMeshComponent();
+		comp->SetStaticMesh(WeaponSetting.MagazineDrop);
+		comp->SetSimulatePhysics(true);
+	}
+}
+
+void AWeaponDefault::SleeveBulletsSpawn()
+{
+	FActorSpawnParameters SpawnParametrs;
+	SpawnParametrs.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
+	SpawnParametrs.Owner = GetOwner();
+	SpawnParametrs.Instigator = GetInstigator();
+	
+	FVector SpawnLocation = SleevBulletSpawnPoint->GetComponentLocation();
+	FRotator SpawnRotation = SleevBulletSpawnPoint->GetComponentRotation() + FRotator(0,0,-90);
+
+	int ImpulstMultiply = 3;
+	FVector ForwardVector = SleevBulletSpawnPoint->GetForwardVector();
+
+	AStaticMeshActor* SleevBullet = (GetWorld()->SpawnActor<AStaticMeshActor>
+		(AStaticMeshActor::StaticClass(), SpawnLocation, SpawnRotation, SpawnParametrs));
+	if (SleevBullet)
+	{
+		SleevBullet->SetMobility(EComponentMobility::Movable);
+		SleevBullet->InitialLifeSpan = 1.0f;
+		SleevBullet->SetActorEnableCollision(true);
+		UStaticMeshComponent* comp = SleevBullet->GetStaticMeshComponent();
+		if (comp)
+		{
+			comp->SetStaticMesh(WeaponSetting.SleeveBullets);
+			comp->SetSimulatePhysics(true);
+			comp->AddImpulse(ForwardVector * ImpulstMultiply);
+			//comp->SetCollisionProfileName(FName )
+		}
+	}
+}
+
 void AWeaponDefault::InitReload()
 {
 	WeaponReloading = true;
 
+	if(WeaponSetting.MagazineDrop)
+		MagazineSpawn();
+	
 	ReloadTimer = WeaponSetting.ReloadTime;
+	
+	if (WeaponSetting.AnimCharReload)
+		OnWeaponReloadStart.Broadcast(WeaponSetting.AnimCharReload);
 }
 
 void AWeaponDefault::FinishReload()
 {
 	WeaponReloading = false;
 	WeaponInfo.Round = WeaponSetting.MaxRound;
+
+	OnWeaponReloadEnd.Broadcast();
 }
 
