@@ -33,13 +33,13 @@ AProjectileDefault::AProjectileDefault()
 	BulletFX = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Bullet FX"));
 	BulletFX->SetupAttachment(RootComponent);
 
-	BulletProjectileMovenent = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Bullet Projectilemovement"));
-	BulletProjectileMovenent->UpdatedComponent = RootComponent;
-	BulletProjectileMovenent->InitialSpeed = 1.f;
-	BulletProjectileMovenent->MaxSpeed = 0.f;
+	BulletProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Bullet Projectilemovement"));
+	BulletProjectileMovement->UpdatedComponent = RootComponent;
+	BulletProjectileMovement->InitialSpeed = 1.f;
+	BulletProjectileMovement->MaxSpeed = 0.f;
 
-	BulletProjectileMovenent->bRotationFollowsVelocity = true;
-	BulletProjectileMovenent->bShouldBounce = true;
+	BulletProjectileMovement->bRotationFollowsVelocity = true;
+	BulletProjectileMovement->bShouldBounce = true;
 }
 
 // Called when the game starts or when spawned
@@ -56,8 +56,17 @@ void AProjectileDefault::Tick(float DeltaTime)
 
 }
 
+void AProjectileDefault::InitProjectile(FProjectileInfo InitParam)
+{
+	
+	BulletProjectileMovement->InitialSpeed = InitParam.ProjectileInitSpeed;
+	this->SetLifeSpan(InitParam.ProjectileLifeTime);
+
+	//ProjectileSetting = InitParam;
+}
+
 void AProjectileDefault::BulletCollisionSphereHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
-	UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+                                                  UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 }
 
