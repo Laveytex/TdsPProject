@@ -6,90 +6,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/LD/Q7WKBY5JZIIC18CYENJSOB.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/.name" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprint/Cursor/M_Cursor_Decal1.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/InteractiveEnvirament/BP_Gate.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/InteractiveEnvirament/BP_Gate.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/InteractiveEnvirament/BP_Trap_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/InteractiveEnvirament/BP_Trap_01.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_AssetPlatform.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Basic_Floor.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Basic_Wall.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Brick_Clay_Beveled.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Brick_Clay_New.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Brick_Clay_Old.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Brick_Cut_Stone.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Brick_Hewn_Stone.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Ceramic_Tile_Checker.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_CobbleStone_Pebble.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_CobbleStone_Rough.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_CobbleStone_Smooth.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_ColorGrid_LowSpec.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Concrete_Grime.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Concrete_Panels.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Concrete_Poured.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Concrete_Tiles.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Glass.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Ground_Grass.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Ground_Gravel.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Ground_Moss.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Hidden.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Hidden.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_LightInstanse.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Metal_Brushed_Nickel.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Metal_Burnished_Steel.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Metal_Chrome.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Metal_Copper.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Metal_Gold.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Metal_Rust.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Metal_Steel.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Rock_Basalt.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Rock_Marble_Polished.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Rock_Sandstone.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Rock_Slate.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Tech_Checker_Dot.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Tech_Hex_Tile.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Tech_Hex_Tile_Pulse.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Tech_Panel.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Water_Lake.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Water_Ocean.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Wood_Floor_Walnut_Polished.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Wood_Floor_Walnut_Worn.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Wood_Oak.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Wood_Pine.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Materials/M_Wood_Walnut.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Props/SM_Door.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Props/SM_Door.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Props/SM_GlassWindow.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Props/SM_GlassWindow.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Props/SM_Stairs.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Props/SM_Stairs.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Cone.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Cone.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Cube.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Cube.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Cylinder.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Cylinder.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_NarrowCapsule.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_NarrowCapsule.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Pipe.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Pipe.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Pipe_180.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Pipe_180.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Pipe_90.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Pipe_90.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Plane.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Plane.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_QuadPyramid.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_QuadPyramid.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Sphere.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Sphere.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Torus.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Torus.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_TriPyramid.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_TriPyramid.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Trim.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Trim.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Trim_90_In.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Trim_90_In.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Trim_90_Out.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Trim_90_Out.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Tube.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Tube.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Wedge_A.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Wedge_A.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Wedge_B.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_Wedge_B.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_WideCapsule.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Structure/Shapes/Shape_WideCapsule.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/BP_ProjectileDefoult.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_ProjectileDefoult.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/EY/I4QTQQ6KGA3RV2TSZ7F8CS.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/3/EY/I4QTQQ6KGA3RV2TSZ7F8CS.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/4/LK/AK1313HHK1BTU0HOEML51T.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/4/LK/AK1313HHK1BTU0HOEML51T.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/LY/GR1Q305HVY1RUAOD52Y61C.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/LY/GR1Q305HVY1RUAOD52Y61C.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/YP/7ETCEODYKDE8MSDGJUOBLM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/YP/7ETCEODYKDE8MSDGJUOBLM.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/LD/Q7WKBY5JZIIC18CYENJSOB.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/LD/Q7WKBY5JZIIC18CYENJSOB.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/CN/YBITCDVYM4MUHPBJMYLFQM.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/CN/YBITCDVYM4MUHPBJMYLFQM.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/YY/57ZRZ2R51JLVIURNDT00HH.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/YY/57ZRZ2R51JLVIURNDT00HH.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/MainTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/MainTypes.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/TDS.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDS.Build.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -375,7 +302,9 @@
       <workItem from="1678346877341" duration="9621000" />
       <workItem from="1678358787660" duration="15588000" />
       <workItem from="1678437468233" duration="43000" />
-      <workItem from="1678437868004" duration="1969000" />
+      <workItem from="1678437868004" duration="5461000" />
+      <workItem from="1678448936684" duration="4892000" />
+      <workItem from="1678516795436" duration="895000" />
     </task>
     <servers />
   </component>

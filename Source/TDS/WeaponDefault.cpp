@@ -193,7 +193,7 @@ void AWeaponDefault::Fire()
 				(GetWorld()->SpawnActor(ProjectileInfo.Projectile, &SpawnLocation, &SpawnRotation, SpawnParametrs));
 				if(myProjectile)
 				{
-					myProjectile->InitialLifeSpan = 20.0f;
+					myProjectile->InitProjectile(WeaponSetting.ProjectileSetting);
 				}
 			}
 			else

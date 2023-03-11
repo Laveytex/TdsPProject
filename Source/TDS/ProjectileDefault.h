@@ -25,7 +25,7 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Components)
 	class UParticleSystemComponent* BulletFX = nullptr;
 
-	FProjectileInfo* ProjectileSetting;
+	FProjectileInfo ProjectileSetting;
 
 protected:
 	// Called when the game starts or when spawned
@@ -37,10 +37,13 @@ public:
 
 	void InitProjectile(FProjectileInfo InitParam);
 
+	UFUNCTION()
 	void BulletCollisionSphereHit(class UPrimitiveComponent* HitComp, AActor* OtherActor,
 		UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit);
+	UFUNCTION()
 	void BulletCollisionSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult& SweepResult);
+	UFUNCTION()
 	void BulletCollisionSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 

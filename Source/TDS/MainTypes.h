@@ -49,6 +49,7 @@ struct FProjectileInfo
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
 	float ProjectileDamage = 20.0f;
+	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
 	float ProjectileLifeTime = 20.0f;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
@@ -65,10 +66,16 @@ struct FProjectileInfo
 	TMap<TEnumAsByte<EPhysicalSurface>, UParticleSystem*> HitFX;
 	
 
+	/*UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
+	bool bIsLikeBomp = false;*/
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
-	bool bIsLikeBomp = false;
+	UParticleSystem* ExploseFX = nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
+	USoundBase* ExploseSound;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
 	float ProjectilleMaxRadiusDamage = 200.0f;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
+	float ExploseMaxDamage = 40.0f;
 };
 
 USTRUCT(BlueprintType)

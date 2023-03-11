@@ -5,6 +5,7 @@
 
 #include "Components/SphereComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
+#include "Kismet/GameplayStatics.h"
 #include "Particles/ParticleSystemComponent.h"
 
 // Sets default values
@@ -60,14 +61,46 @@ void AProjectileDefault::InitProjectile(FProjectileInfo InitParam)
 {
 	
 	BulletProjectileMovement->InitialSpeed = InitParam.ProjectileInitSpeed;
+	BulletProjectileMovement->MaxSpeed = InitParam.ProjectileInitSpeed;
 	this->SetLifeSpan(InitParam.ProjectileLifeTime);
-
-	//ProjectileSetting = InitParam;
+	
+	ProjectileSetting = InitParam;
 }
 
 void AProjectileDefault::BulletCollisionSphereHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
-                                                  UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
+						UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
+	UE_LOG(LogTemp, Warning, TEXT("Projectile::BulletCollisionSphereHit"))
+	
+	if (OtherActor && Hit.PhysMaterial.IsValid())
+	{
+		EPhysicalSurface mySurfacetype = UGameplayStatics::GetSurfaceType(Hit);
+		
+		if (ProjectileSetting.HitDecals.Contains(mySurfacetype))
+		{
+			UMaterialInterface* myMaterial = ProjectileSetting.HitDecals[mySurfacetype];
+
+			if (myMaterial && OtherComp)
+			{
+				UGameplayStatics::SpawnDecalAttached(myMaterial, FVector(20.0f), OtherComp, NAME_None,
+					Hit.ImpactPoint, Hit.Normal.Rotation(), EAttachLocation::KeepWorldPosition, 10.0f);
+			}
+		}
+		if (ProjectileSetting.HitFX.Contains(mySurfacetype))
+		{
+			UParticleSystem* myParticle = ProjectileSetting.HitFX[mySurfacetype];
+
+			if (myParticle)
+			{
+				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), myParticle, FTransform(Hit.ImpactNormal.Rotation(), Hit.ImpactPoint, FVector(1.0f)));	
+			}
+		}
+	}
+	if (ProjectileSetting.HitSound)
+	{
+		UGameplayStatics::SpawnSoundAtLocation(GetWorld(), ProjectileSetting.HitSound, Hit.ImpactPoint);
+	}
+	UGameplayStatics::ApplyDamage(OtherActor, ProjectileSetting.ProjectileDamage, GetInstigatorController(), this, NULL);
 }
 
 void AProjectileDefault::BulletCollisionSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
