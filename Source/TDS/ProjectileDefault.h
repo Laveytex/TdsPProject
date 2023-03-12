@@ -3,8 +3,12 @@
 #pragma once
 
 #include "CoreMinimal.h"
-#include "MainTypes.h"
 #include "GameFramework/Actor.h"
+#include "Components/SphereComponent.h"
+#include "Particles/ParticleSystemComponent.h"
+#include "GameFramework/ProjectileMovementComponent.h"
+
+#include "MainTypes.h"
 #include "ProjectileDefault.generated.h"
 
 UCLASS()
@@ -47,4 +51,6 @@ public:
 	void BulletCollisionSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 		UPrimitiveComponent* OtherComp, int32 OtherBodyIndex);
 
+	UFUNCTION()
+	virtual void ImpactProjectile();
 };

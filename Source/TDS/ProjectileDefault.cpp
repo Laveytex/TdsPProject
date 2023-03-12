@@ -54,7 +54,6 @@ void AProjectileDefault::BeginPlay()
 void AProjectileDefault::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
 
 void AProjectileDefault::InitProjectile(FProjectileInfo InitParam)
@@ -101,6 +100,7 @@ void AProjectileDefault::BulletCollisionSphereHit(UPrimitiveComponent* HitComp, 
 		UGameplayStatics::SpawnSoundAtLocation(GetWorld(), ProjectileSetting.HitSound, Hit.ImpactPoint);
 	}
 	UGameplayStatics::ApplyDamage(OtherActor, ProjectileSetting.ProjectileDamage, GetInstigatorController(), this, NULL);
+	ImpactProjectile();
 }
 
 void AProjectileDefault::BulletCollisionSphereBeginOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
@@ -111,5 +111,10 @@ void AProjectileDefault::BulletCollisionSphereBeginOverlap(UPrimitiveComponent* 
 void AProjectileDefault::BulletCollisionSphereEndOverlap(UPrimitiveComponent* OverlappedComponent, AActor* OtherActor,
 	UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
 {
+}
+
+void AProjectileDefault::ImpactProjectile()
+{
+	this->Destroy();
 }
 
