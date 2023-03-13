@@ -6,16 +6,21 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_Grenade.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_GrenadeLouncher.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault_Greanade.cpp" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault_Greanade.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Blueprint/Interactive/BP_ActorTakeDamage.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Pickups/Grenade_Launcher_Drop.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/MQ/EA3ONG1ZBPAWNZXSO8FO3C.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/FX/P_Grenade_MuzzleFlash_01.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/FX/P_Grenade_MuzzleFlash_01.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/LD/Q7WKBY5JZIIC18CYENJSOB.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/LD/Q7WKBY5JZIIC18CYENJSOB.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/7/YP/7ETCEODYKDE8MSDGJUOBLM.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/A/OD/8GHMURGLYTJTKZ328LCV1Y.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/A/OD/8GHMURGLYTJTKZ328LCV1Y.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/AU/EST8TA5GPXFCJO0PZIV8MV.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/AU/EST8TA5GPXFCJO0PZIV8MV.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/YY/57ZRZ2R51JLVIURNDT00HH.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/E/YY/57ZRZ2R51JLVIURNDT00HH.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TDS/MainTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/MainTypes.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault_Greanade.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault_Greanade.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault_Greanade.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault_Greanade.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TDS/TDS.Build.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDS.Build.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -306,7 +311,9 @@
       <workItem from="1678437868004" duration="5461000" />
       <workItem from="1678448936684" duration="4892000" />
       <workItem from="1678516795436" duration="1399000" />
-      <workItem from="1678605633887" duration="5586000" />
+      <workItem from="1678605633887" duration="6385000" />
+      <workItem from="1678694007115" duration="6677000" />
+      <workItem from="1678701443498" duration="3683000" />
     </task>
     <servers />
   </component>

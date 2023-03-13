@@ -30,6 +30,5 @@ public:
 	void Explose();
 
 	bool TimerEnabled = false;
-	float TimerToExplose = 0.0f;
-	float TimeToExplose = 2.0f;
+	float TimerToExplose = 0.0f;	
 };

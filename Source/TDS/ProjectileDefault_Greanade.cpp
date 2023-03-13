@@ -18,17 +18,17 @@ void AProjectileDefault_Greanade::Tick(float DeltaSeconds)
 
 void AProjectileDefault_Greanade::TimerExplose(float DeltaSeconds)
 {
-	if (TimerEnabled)
-	{
-		if (TimerToExplose > TimeToExplose)
+		if (TimerEnabled)
 		{
-			Explose();
+			if (TimerToExplose > ProjectileSetting.TimeToExlose)
+			{
+				Explose();
+			}
+			else
+			{
+				TimerToExplose += DeltaSeconds;
+			}
 		}
-		else
-		{
-			TimerToExplose += DeltaSeconds;
-		}
-	}
 }
 
 void AProjectileDefault_Greanade::BulletCollisionSphereHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
@@ -39,7 +39,7 @@ void AProjectileDefault_Greanade::BulletCollisionSphereHit(UPrimitiveComponent* 
 
 void AProjectileDefault_Greanade::ImpactProjectile()
 {
-	TimerEnabled = true;
+		TimerEnabled = true;
 }
 
 void AProjectileDefault_Greanade::Explose()
@@ -57,9 +57,17 @@ void AProjectileDefault_Greanade::Explose()
 
 	TArray<AActor*> IgnoredActor;
 
-	UGameplayStatics::ApplyRadialDamageWithFalloff(GetWorld(), ProjectileSetting.ExploseMaxDamage,
-		ProjectileSetting. ExploseMaxDamage*0.2f, GetActorLocation(), 1000.0f,
-		2000.0f, 5, NULL, IgnoredActor, nullptr, nullptr);
+	UGameplayStatics::ApplyRadialDamageWithFalloff(GetWorld(), ProjectileSetting.ExploseDamage,
+		ProjectileSetting.ExploseDamage*ProjectileSetting.ExploseReductionFactorToMinDamage,
+		GetActorLocation(), ProjectileSetting.ExploseInnerRadius,
+		ProjectileSetting.ExploseOuterRadius, ProjectileSetting.ExploseDamageFalloff,
+		NULL, IgnoredActor, nullptr, nullptr);
 
+	if (ProjectileSetting.ShowDebug)
+	{
+		DrawDebugSphere(GetWorld(), GetActorLocation(), ProjectileSetting.ExploseInnerRadius, 8, FColor::Red, true, -1, 0, 2);
+		DrawDebugSphere(GetWorld(), GetActorLocation(), ProjectileSetting.ExploseOuterRadius, 16, FColor::Yellow, true, -1, 0, 2);
+	}
+	
 	this->Destroy();
 }
