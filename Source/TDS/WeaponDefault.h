@@ -108,6 +108,7 @@ public:
 
 	void MagazineSpawn();
 	void SleeveBulletsSpawn();
+	void PlayRepoadSound();
 	
 	void InitReload();
 	void FinishReload();

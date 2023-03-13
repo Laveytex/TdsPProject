@@ -198,6 +198,25 @@ void AWeaponDefault::Fire()
 			}
 			else
 			{
+				TArray<AActor*> IgnoredActor;
+				FHitResult HitResoult;
+
+				FVector TraceDistanceLocation = (ShootLocation->GetForwardVector() * WeaponSetting.DistantTrace) + SpawnLocation;
+				UKismetSystemLibrary::LineTraceSingle(GetWorld(), SpawnLocation, TraceDistanceLocation,
+					ETraceTypeQuery::TraceTypeQuery1, false, IgnoredActor,
+					EDrawDebugTrace::ForDuration, HitResoult, true, FLinearColor::Green,
+					FLinearColor::Red, 0.5f);
+				
+				if (HitResoult.GetActor())
+				{
+					FVector HitLocation = HitResoult.Location;
+				
+					if (ProjectileInfo.HitSound)
+					{
+						UGameplayStatics::SpawnSoundAtLocation(GetWorld(), ProjectileInfo.HitSound, HitResoult.ImpactPoint);
+					}
+					UGameplayStatics::ApplyDamage(HitResoult.GetActor(), ProjectileInfo.ProjectileDamage, GetInstigatorController(), this, NULL);
+				}
 				
 			}
 		}
@@ -376,19 +395,26 @@ void AWeaponDefault::SleeveBulletsSpawn()
 	}
 }
 
-void AWeaponDefault::InitReload()
+void AWeaponDefault::PlayRepoadSound()
 {
-	if (WeaponSetting.AnimCharReload)
-		OnWeaponReloadStart.Broadcast(WeaponSetting.AnimCharReload);
-	
-		if (WeaponReloading == false)
+	UGameplayStatics::SpawnSoundAtLocation(GetWorld(), WeaponSetting.SoundReloadWeapon, ShootLocation->GetComponentLocation());
+}
+
+void AWeaponDefault::InitReload()
+{	if (WeaponReloading == false)
 		{
-			ReloadTimer = WeaponSetting.ReloadTime;
-			
-			if(WeaponSetting.MagazineDrop)
-			{
-				MagazineSpawn();
-			}
+			if (WeaponSetting.AnimCharReload)
+				OnWeaponReloadStart.Broadcast(WeaponSetting.AnimCharReload);
+	
+					if (WeaponSetting.SoundReloadWeapon)
+						PlayRepoadSound();
+					
+					ReloadTimer = WeaponSetting.ReloadTime;
+					
+					if(WeaponSetting.MagazineDrop)
+					{
+						MagazineSpawn();
+					}
 		}
 	WeaponReloading = true;
 }

@@ -45,6 +45,7 @@ void AProjectileDefault_Greanade::ImpactProjectile()
 void AProjectileDefault_Greanade::Explose()
 {
 	TimerEnabled = false;
+	
 	if (ProjectileSetting.ExploseFX)
 	{
 		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ProjectileSetting.ExploseFX,
@@ -60,13 +61,14 @@ void AProjectileDefault_Greanade::Explose()
 	UGameplayStatics::ApplyRadialDamageWithFalloff(GetWorld(), ProjectileSetting.ExploseDamage,
 		ProjectileSetting.ExploseDamage*ProjectileSetting.ExploseReductionFactorToMinDamage,
 		GetActorLocation(), ProjectileSetting.ExploseInnerRadius,
-		ProjectileSetting.ExploseOuterRadius, ProjectileSetting.ExploseDamageFalloff,
-		NULL, IgnoredActor, nullptr, nullptr);
-
+		ProjectileSetting.ExploseOuterRadius, ProjectileSetting.ExploseDamageFalloff, NULL,
+		IgnoredActor, this, nullptr);
+	
 	if (ProjectileSetting.ShowDebug)
 	{
-		DrawDebugSphere(GetWorld(), GetActorLocation(), ProjectileSetting.ExploseInnerRadius, 8, FColor::Red, true, -1, 0, 2);
-		DrawDebugSphere(GetWorld(), GetActorLocation(), ProjectileSetting.ExploseOuterRadius, 16, FColor::Yellow, true, -1, 0, 2);
+		DrawDebugSphere(GetWorld(), GetActorLocation(), ProjectileSetting.ExploseInnerRadius, 8, FColor::Red, true, 0.1f, 0, 0);
+		DrawDebugSphere(GetWorld(), GetActorLocation(), ((ProjectileSetting.ExploseInnerRadius+ProjectileSetting.ExploseOuterRadius)/2), 8, FColor::Yellow, true, 0.1f, 0, 0);
+		DrawDebugSphere(GetWorld(), GetActorLocation(), ProjectileSetting.ExploseOuterRadius, 16, FColor::White, true, 0.1f, 0, 0);
 	}
 	
 	this->Destroy();

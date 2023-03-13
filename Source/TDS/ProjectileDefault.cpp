@@ -56,6 +56,7 @@ void AProjectileDefault::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 }
 
+
 void AProjectileDefault::InitProjectile(FProjectileInfo InitParam)
 {
 	
