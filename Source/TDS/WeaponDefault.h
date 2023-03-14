@@ -116,6 +116,6 @@ public:
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
 	bool ShowDebug = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
-	float SizeVectorToChangeShootDirection = 100.0f;
+	float SizeVectorToChangeShootDirection = 200.0f;
 	
 };

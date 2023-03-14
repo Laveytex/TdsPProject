@@ -30,7 +30,7 @@ AProjectileDefault::AProjectileDefault()
 	BulletMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("Bullet projectile mash"));
 	BulletMesh->SetupAttachment(RootComponent);
 	BulletMesh->SetCanEverAffectNavigation(false);
-
+	
 	BulletFX = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Bullet FX"));
 	BulletFX->SetupAttachment(RootComponent);
 
@@ -65,6 +65,17 @@ void AProjectileDefault::InitProjectile(FProjectileInfo InitParam)
 	this->SetLifeSpan(InitParam.ProjectileLifeTime);
 	
 	ProjectileSetting = InitParam;
+
+	if (InitParam.BulletMesh )
+		BulletMesh->SetStaticMesh(InitParam.BulletMesh);
+	else if(BulletMesh->GetStaticMesh() == nullptr)
+		BulletMesh->DestroyComponent();
+	if(InitParam.TrailFX)
+		BulletFX->SetTemplate(InitParam.TrailFX);
+	else if(BulletFX == nullptr)
+		BulletFX->DestroyComponent();
+		
+	
 }
 
 void AProjectileDefault::BulletCollisionSphereHit(UPrimitiveComponent* HitComp, AActor* OtherActor,

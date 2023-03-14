@@ -151,9 +151,9 @@ bool AWeaponDefault::CheckWeaponCanFire()
 
 void AWeaponDefault::Fire()
 {
-	FireTimer = WeaponSetting. RateOfFire;
+	FireTimer = WeaponSetting.RateOfFire;
 	WeaponInfo.Round--;
-	//chek here or in function?
+	
 	if(WeaponSetting.SleeveBullets)
 		SleeveBulletsSpawn();
 	
@@ -172,6 +172,7 @@ void AWeaponDefault::Fire()
 		ProjectileInfo = GetProjectile();
 
 		FVector EndLocation;
+		
 		for (int8 i=0;i<NumberProjectile; i++)
 		{
 			EndLocation = GetFireEndLocation();
@@ -201,11 +202,12 @@ void AWeaponDefault::Fire()
 				TArray<AActor*> IgnoredActor;
 				FHitResult HitResoult;
 
-				FVector TraceDistanceLocation = (ShootLocation->GetForwardVector() * WeaponSetting.DistantTrace) + SpawnLocation;
-				UKismetSystemLibrary::LineTraceSingle(GetWorld(), SpawnLocation, TraceDistanceLocation,
+				//FVector TraceDistanceLocation = (ShootLocation->GetForwardVector() * WeaponSetting.DistantTrace) + SpawnLocation;
+				
+				UKismetSystemLibrary::LineTraceSingle(GetWorld(), SpawnLocation, EndLocation,
 					ETraceTypeQuery::TraceTypeQuery1, false, IgnoredActor,
-					EDrawDebugTrace::ForDuration, HitResoult, true, FLinearColor::Green,
-					FLinearColor::Red, 0.5f);
+					EDrawDebugTrace::ForDuration, HitResoult, true,
+					FLinearColor::Green,FLinearColor::Red, 0.5f);
 				
 				if (HitResoult.GetActor())
 				{
@@ -288,28 +290,38 @@ FVector AWeaponDefault::GetFireEndLocation() const
 {
 	bool bShootDirection = false;
 	FVector EndLocation = FVector(0.f);
+	FProjectileInfo ProjectileInfo;
 
 	
 FVector tmpV = (ShootLocation->GetComponentLocation() - ShootEndLocation);
 	//UE_LOG(LogTemp, Warning, TEXT("Vector: X = %f. Y = %f. Size = %f"), tmpV.X, tmpV.Y, tmpV.Size());
+	
+//**Change fire target if cursor close the char
 
 	if(tmpV.Size() > SizeVectorToChangeShootDirection)
 	{
 		EndLocation = ShootLocation->GetComponentLocation() + ApplyDispersionToShoot
-		((ShootLocation->GetComponentLocation() - ShootEndLocation).GetSafeNormal()) * -20000.0f;
+		((ShootLocation->GetComponentLocation() - ShootEndLocation).GetSafeNormal()) * -(WeaponSetting.DistantTrace);
 		
 		if(ShowDebug)
+		{
 			DrawDebugCone(GetWorld(), ShootLocation->GetComponentLocation(), -(ShootLocation->GetComponentLocation()
-				- ShootEndLocation), WeaponSetting.DistantTrace, GetCurrentDispersion()* PI / 180.f,
-				GetCurrentDispersion()* PI / 180.f, 32, FColor::Emerald, false, .1f, (uint8)'\000', 1.0f);
+			- ShootEndLocation), WeaponSetting.DistantTrace, GetCurrentDispersion()* PI / 180.f,
+			GetCurrentDispersion()* PI / 180.f, 32,
+			FColor::Emerald, false, .1f, (uint8)'\000', 1.0f);
+		}
 	}	
 	else
 	{
-		EndLocation = ShootLocation->GetComponentLocation() + ApplyDispersionToShoot(ShootLocation->GetForwardVector()) * 20000.0f;
+		EndLocation = ShootLocation->GetComponentLocation() + ApplyDispersionToShoot(ShootLocation->GetForwardVector()) * (WeaponSetting.DistantTrace);
 		
 		if (ShowDebug)
+		{
 			DrawDebugCone(GetWorld(), ShootLocation->GetComponentLocation(), ShootLocation->GetForwardVector(),
-				WeaponSetting.DistantTrace, GetCurrentDispersion()* PI / 180.f, GetCurrentDispersion()* PI / 180.f, 32, FColor::Emerald, false, .1f, (uint8)'\000', 1.0f);
+				WeaponSetting.DistantTrace, GetCurrentDispersion()* PI / 180.f,
+				GetCurrentDispersion()* PI / 180.f, 32,
+				FColor::Emerald, false, .1f, (uint8)'\000', 1.0f);
+		}
 	}
 		
 	if (ShowDebug)
@@ -369,11 +381,13 @@ void AWeaponDefault::SleeveBulletsSpawn()
 	SpawnParametrs.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
 	SpawnParametrs.Owner = GetOwner();
 	SpawnParametrs.Instigator = GetInstigator();
-	
+
 	FVector SpawnLocation = SleevBulletSpawnPoint->GetComponentLocation();
 	FRotator SpawnRotation = SleevBulletSpawnPoint->GetComponentRotation() + FRotator(0,0,-90);
 
-	int ImpulstMultiply = 3;
+	float ImpulstMultiply;
+	ImpulstMultiply = FMath::FRandRange(2,4);
+	
 	FVector ForwardVector = SleevBulletSpawnPoint->GetForwardVector();
 
 	AStaticMeshActor* SleevBullet = (GetWorld()->SpawnActor<AStaticMeshActor>
