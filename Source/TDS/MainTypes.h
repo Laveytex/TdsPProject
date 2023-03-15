@@ -2,6 +2,7 @@
 
 #pragma once
 
+#include "NiagaraComponent.h"
 #include "Kismet/BlueprintFunctionLibrary.h"
 #include "Engine/DataTable.h"
 
@@ -51,6 +52,9 @@ struct FProjectileInfo
 	UStaticMesh* BulletMesh = nullptr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
 	UParticleSystem* TrailFX = nullptr;
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
+	UNiagaraSystem* ScanShootFX = nullptr;
+	
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
 	TSubclassOf<class AProjectileDefault> Projectile = nullptr;

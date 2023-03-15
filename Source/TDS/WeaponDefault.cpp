@@ -4,6 +4,7 @@
 #include "WeaponDefault.h"
 #include "DrawDebugHelpers.h"
 #include "MainTypes.h"
+#include "NiagaraFunctionLibrary.h"
 #include "Engine/StaticMeshActor.h"
 #include "Kismet/KismetMathLibrary.h"
 #include "Kismet/GameplayStatics.h"
@@ -201,13 +202,23 @@ void AWeaponDefault::Fire()
 			{
 				TArray<AActor*> IgnoredActor;
 				FHitResult HitResoult;
+				FCollisionQueryParams CollisionParams;
+				CollisionParams.AddIgnoredActor(this);
 
 				//FVector TraceDistanceLocation = (ShootLocation->GetForwardVector() * WeaponSetting.DistantTrace) + SpawnLocation;
-				
-				UKismetSystemLibrary::LineTraceSingle(GetWorld(), SpawnLocation, EndLocation,
+
+				if(ShowDebug)
+				{
+					FHitResult HitDebug;
+					UKismetSystemLibrary::LineTraceSingle(GetWorld(), SpawnLocation, EndLocation,
 					ETraceTypeQuery::TraceTypeQuery1, false, IgnoredActor,
-					EDrawDebugTrace::ForDuration, HitResoult, true,
+					EDrawDebugTrace::ForDuration,HitDebug, true,
 					FLinearColor::Green,FLinearColor::Red, 0.5f);
+				}
+				
+
+				bool Trace = GetWorld()->LineTraceSingleByChannel(HitResoult, SpawnLocation, EndLocation,
+					ECollisionChannel::ECC_Visibility, CollisionParams, FCollisionResponseParams());
 				
 				if (HitResoult.GetActor())
 				{
@@ -217,9 +228,18 @@ void AWeaponDefault::Fire()
 					{
 						UGameplayStatics::SpawnSoundAtLocation(GetWorld(), ProjectileInfo.HitSound, HitResoult.ImpactPoint);
 					}
-					UGameplayStatics::ApplyDamage(HitResoult.GetActor(), ProjectileInfo.ProjectileDamage, GetInstigatorController(), this, NULL);
+					if (ProjectileInfo.ScanShootFX)
+					{
+						
+						UNiagaraComponent* ShootFX = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), ProjectileInfo.ScanShootFX, HitResoult.TraceStart, FRotator::ZeroRotator );
+						ShootFX->SetVectorParameter(FName (TEXT("EndPointLocation")), HitResoult.Location);
+						
+						//UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), ProjectileInfo.ScanShootFX, HitResoult.TraceStart, FRotator::ZeroRotator );
+					}
+					
+					UGameplayStatics::ApplyDamage(HitResoult.GetActor(), ProjectileInfo.ProjectileDamage, GetInstigatorController(),
+						this, NULL);
 				}
-				
 			}
 		}
 	}
@@ -386,7 +406,7 @@ void AWeaponDefault::SleeveBulletsSpawn()
 	FRotator SpawnRotation = SleevBulletSpawnPoint->GetComponentRotation() + FRotator(0,0,-90);
 
 	float ImpulstMultiply;
-	ImpulstMultiply = FMath::FRandRange(2,4);
+	ImpulstMultiply = FMath::FRandRange(2.0f,4.0f);
 	
 	FVector ForwardVector = SleevBulletSpawnPoint->GetForwardVector();
 

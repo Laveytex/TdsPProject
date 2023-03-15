@@ -107,6 +107,5 @@ public:
 
 	UFUNCTION(BlueprintCallable)
 	UDecalComponent* GetCursorToWorld();
-	
 };
 
