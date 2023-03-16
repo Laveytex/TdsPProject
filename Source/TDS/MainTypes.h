@@ -49,7 +49,7 @@ struct FProjectileInfo
 	bool ShowDebug = false;
 
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
-	UStaticMesh* BulletMesh = nullptr;
+	UStaticMesh* ProjectileStaticMesh = nullptr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
 	UParticleSystem* TrailFX = nullptr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")

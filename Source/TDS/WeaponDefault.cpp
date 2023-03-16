@@ -153,7 +153,6 @@ bool AWeaponDefault::CheckWeaponCanFire()
 void AWeaponDefault::Fire()
 {
 	FireTimer = WeaponSetting.RateOfFire;
-	WeaponInfo.Round--;
 	
 	if(WeaponSetting.SleeveBullets)
 		SleeveBulletsSpawn();
@@ -176,6 +175,8 @@ void AWeaponDefault::Fire()
 		
 		for (int8 i=0;i<NumberProjectile; i++)
 		{
+			WeaponInfo.Round--;
+			
 			EndLocation = GetFireEndLocation();
 			
 			FVector Dir = GetFireEndLocation() - SpawnLocation;
@@ -205,8 +206,7 @@ void AWeaponDefault::Fire()
 				FCollisionQueryParams CollisionParams;
 				CollisionParams.AddIgnoredActor(this);
 
-				//FVector TraceDistanceLocation = (ShootLocation->GetForwardVector() * WeaponSetting.DistantTrace) + SpawnLocation;
-
+			
 				if(ShowDebug)
 				{
 					FHitResult HitDebug;
@@ -230,11 +230,9 @@ void AWeaponDefault::Fire()
 					}
 					if (ProjectileInfo.ScanShootFX)
 					{
-						
-						UNiagaraComponent* ShootFX = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), ProjectileInfo.ScanShootFX, HitResoult.TraceStart, FRotator::ZeroRotator );
+						UNiagaraComponent* ShootFX = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
+							ProjectileInfo.ScanShootFX, HitResoult.TraceStart, FRotator::ZeroRotator);
 						ShootFX->SetVectorParameter(FName (TEXT("EndPointLocation")), HitResoult.Location);
-						
-						//UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), ProjectileInfo.ScanShootFX, HitResoult.TraceStart, FRotator::ZeroRotator );
 					}
 					
 					UGameplayStatics::ApplyDamage(HitResoult.GetActor(), ProjectileInfo.ProjectileDamage, GetInstigatorController(),

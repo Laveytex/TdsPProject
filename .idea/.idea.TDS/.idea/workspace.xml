@@ -6,24 +6,31 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_ShootBeam.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_ShootBeam_System.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Audio/NewFolder/ElekctroShoot/Laser_Layer_11.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Audio/NewFolder/ElekctroShoot/Laser_Noise_07.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Audio/NewFolder/ElekctroShoot/Laser_Shot_Sizzle_01.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Audio/NewFolder/ElekctroShoot/Laser_Shot_Sizzle_02.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Audio/NewFolder/ElekctroShoot/Laser_Shot_Sizzle_03.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Audio/NewFolder/ElekctroShoot/Laser_Shot_Sizzle_04.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Audio/NewFolder/ElekctroShoot/Laser_Shot_Sizzle_05.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Audio/NewFolder/ElekctroShoot/Laser_Shot_Sizzle_Cue.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_LightBeam.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_LightBeam_System.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_AlienShootgun.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/Alien/Cyborg_Weapon.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/Alien/Cyborg_Weapon_mat.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/Alien/Weapon_BaseColor.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/Alien/Weapon_Metallic.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/Alien/Weapon_Normal.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/Alien/Weapon_Occlusion.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/Alien/Weapon_Roughness.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/Mannequins/Animations/Quinn/Aim/Fire_Rifle_Ironsights_Montage.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/Mannequins/Animations/Quinn/Aim/Fire_Rifle_Ironsights_Montage.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Explosion.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Explosion.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Fire.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Fire.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Smoke.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Smoke.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Sparks.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Sparks.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Steam.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Enviroment/Light/Blueprint_Effect_Steam.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/P_Ambient_Dust.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/P_Explosion.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/P_Fire.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/P_Smoke.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/P_Sparks.uasset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/P_Steam_Lit.uasset" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/C/9V/YB2Q1ML1MG0O1RQGLD2ITK.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/C/9V/YB2Q1ML1MG0O1RQGLD2ITK.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/D/SY/0VAF6B4CRTKDHDFL0GW8KY.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/D/SY/0VAF6B4CRTKDHDFL0GW8KY.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/MainTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/MainTypes.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -321,7 +328,11 @@
       <workItem from="1678716640517" duration="5353000" />
       <workItem from="1678777941619" duration="13396000" />
       <workItem from="1678870985969" duration="2535000" />
-      <workItem from="1678874395446" duration="4800000" />
+      <workItem from="1678874395446" duration="5524000" />
+      <workItem from="1678902728161" duration="597000" />
+      <workItem from="1678903954611" duration="442000" />
+      <workItem from="1678904703440" duration="2647000" />
+      <workItem from="1678948781144" duration="1107000" />
     </task>
     <servers />
   </component>

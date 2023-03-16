@@ -66,8 +66,8 @@ void AProjectileDefault::InitProjectile(FProjectileInfo InitParam)
 	
 	ProjectileSetting = InitParam;
 
-	if (InitParam.BulletMesh )
-		BulletMesh->SetStaticMesh(InitParam.BulletMesh);
+	if (InitParam.ProjectileStaticMesh )
+		BulletMesh->SetStaticMesh(InitParam.ProjectileStaticMesh);
 	else if(BulletMesh->GetStaticMesh() == nullptr)
 		BulletMesh->DestroyComponent();
 	if(InitParam.TrailFX)
