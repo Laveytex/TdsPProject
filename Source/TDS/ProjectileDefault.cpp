@@ -82,6 +82,13 @@ void AProjectileDefault::BulletCollisionSphereHit(UPrimitiveComponent* HitComp, 
 						UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
 	UE_LOG(LogTemp, Warning, TEXT("Projectile::BulletCollisionSphereHit"))
+
+	//***************
+	UPhysicalMaterial* Pmat = Hit.PhysMaterial.Get();
+	AActor* Actor = Hit.GetActor();
+	bool Pmatd = Hit.PhysMaterial.IsValid();
+	UE_LOG(LogTemp, Warning, TEXT("ProjectileDefault::BulletCollisionSphereHit - Actor name: %s, Surface type: %i"), *Actor->GetName(), Pmatd);
+	//***************
 	
 	if (OtherActor && Hit.PhysMaterial.IsValid())
 	{
@@ -97,9 +104,9 @@ void AProjectileDefault::BulletCollisionSphereHit(UPrimitiveComponent* HitComp, 
 					Hit.ImpactPoint, Hit.Normal.Rotation(), EAttachLocation::KeepWorldPosition, 10.0f);
 			}
 		}
-		if (ProjectileSetting.HitFX.Contains(mySurfacetype))
+		if (ProjectileSetting.HitFXLeg.Contains(mySurfacetype))
 		{
-			UParticleSystem* myParticle = ProjectileSetting.HitFX[mySurfacetype];
+			UParticleSystem* myParticle = ProjectileSetting.HitFXLeg[mySurfacetype];
 
 			if (myParticle)
 			{

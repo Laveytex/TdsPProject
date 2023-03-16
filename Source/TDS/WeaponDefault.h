@@ -40,9 +40,9 @@ public:
 
 	UPROPERTY()
 	FWeaponInfo WeaponSetting;
+		
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Weapon Info")
 	FAddicionalWeaponInfo WeaponInfo;
-	
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "FireLogic")
 	bool WeaponFiring  = false;
@@ -57,7 +57,6 @@ public:
 	//Debug
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ReloadLogic Dedug")
 	float ReloadTime = 0.0f;
-	
 
 protected:
 	// Called when the game starts or when spawned
@@ -70,6 +69,8 @@ public:
 	void FireTick(float DeltaTime);
 	void ReloadTick(float DeltaTime);
 	void DispersionTick(float DeltaTime);
+	void ClipDropTick(float DeltaTime);
+	void ShellDropTick(float DeltaTime);
 	
 	void WeaponInit();
 
@@ -90,7 +91,15 @@ public:
 	FVector GetFireEndLocation() const;
 	int8 GetNumberProjectileByShoot() const;
 
+	//flags
 	bool BlockFire = false;
+	bool WeaponAiming = false;
+
+	float DropClipTimer = 0.0f;
+	bool DropClipFlag = false;
+
+	float DropSheelTimer = 0.0f;
+	bool DropSheelFlag = false;
 	
 	//Dispersion
 	bool ShouldReduceDispersion = false;
@@ -101,14 +110,15 @@ public:
 	float CurrentDispersionRecoil = 0.1f;
 	float CurrentDispersionReduction = 0.1f;
 
+	
+
 	FVector ShootEndLocation = FVector(0);
 	
 	UFUNCTION(BlueprintCallable)
 	int32 GetWeaponRound();
 
-	void MagazineSpawn();
-	void SleeveBulletsSpawn();
-	void PlayRepoadSound();
+	void ClipDrop();
+	void ShellDrop();
 	
 	void InitReload();
 	void FinishReload();
