@@ -96,14 +96,21 @@ public:
 	void InitWeapon(FName IDWeaponName);
 	UFUNCTION(BlueprintCallable)
 	void TryReloadWeapon();
+	
 	UFUNCTION()
 	void WeaponReloadStart(UAnimMontage* Anim);
+	UFUNCTION(BlueprintNativeEvent)
+	void WeaponReloadStart_BP(UAnimMontage* Anim);
+	
 	UFUNCTION()
 	void WeaponReloadEnd();
 	UFUNCTION(BlueprintNativeEvent)
-	void WeaponReloadStart_BP(UAnimMontage* Anim);
-	UFUNCTION(BlueprintNativeEvent)
 	void WeaponReloadEnd_BP();
+	
+	UFUNCTION()
+		void WeaponFireStart(UAnimMontage* Anim);
+	UFUNCTION(BlueprintNativeEvent)
+		void WeaponFireStart_BP(UAnimMontage* Anim);
 
 	UFUNCTION(BlueprintCallable)
 	UDecalComponent* GetCursorToWorld();

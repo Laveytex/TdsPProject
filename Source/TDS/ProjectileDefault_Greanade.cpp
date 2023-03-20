@@ -3,6 +3,7 @@
 
 #include "ProjectileDefault_Greanade.h"
 
+#include "NiagaraFunctionLibrary.h"
 #include "Kismet/GameplayStatics.h"
 
 void AProjectileDefault_Greanade::BeginPlay()
@@ -45,12 +46,18 @@ void AProjectileDefault_Greanade::ImpactProjectile()
 void AProjectileDefault_Greanade::Explose()
 {
 	TimerEnabled = false;
-	
-	if (ProjectileSetting.ExploseFX)
+
+	if (ProjectileSetting.ExploseFXNi)
 	{
-		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ProjectileSetting.ExploseFX,
+		UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
+			ProjectileSetting.ExploseFXNi, GetActorLocation(), FRotator::ZeroRotator);
+	}
+	if (ProjectileSetting.ExploseFXLeg)
+	{
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), ProjectileSetting.ExploseFXLeg,
 			GetActorLocation(), GetActorRotation(), FVector(1.0f));
 	}
+	
 	if (ProjectileSetting.ExploseSound)
 	{
 		UGameplayStatics::PlaySoundAtLocation(GetWorld(), ProjectileSetting.ExploseSound, GetActorLocation());

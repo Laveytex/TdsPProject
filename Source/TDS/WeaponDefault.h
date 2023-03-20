@@ -10,6 +10,7 @@
 #include "ProjectileDefault.h"
 #include "WeaponDefault.generated.h"
 
+DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWeaponFireStart, UAnimMontage*, AnimFireChar);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE_OneParam(FOnWeaponReloadStart, UAnimMontage*, Anim);
 DECLARE_DYNAMIC_MULTICAST_DELEGATE(FOnWeaponReloadEnd);
 
@@ -22,6 +23,7 @@ public:
 	// Sets default values for this actor's properties
 	AWeaponDefault();
 
+	FOnWeaponFireStart OnWeaponFireStart;
 	FOnWeaponReloadStart OnWeaponReloadStart;
 	FOnWeaponReloadEnd OnWeaponReloadEnd;
 
@@ -34,9 +36,9 @@ public:
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Components)
 	class UArrowComponent* ShootLocation = nullptr;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Components)
-	class UArrowComponent* MagazineSpawnPoint = nullptr;
+	class UArrowComponent* ClipSpawnPoint = nullptr;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, meta = (AllowPrivateAccess = "true"), Category = Components)
-	class UArrowComponent* SleevBulletSpawnPoint = nullptr;
+	class UArrowComponent* ShellSpawnPoint = nullptr;
 
 	UPROPERTY()
 	FWeaponInfo WeaponSetting;
@@ -95,11 +97,25 @@ public:
 	bool BlockFire = false;
 	bool WeaponAiming = false;
 
+	//Weapon drops
 	float DropClipTimer = 0.0f;
 	bool DropClipFlag = false;
 
 	float DropSheelTimer = 0.0f;
 	bool DropSheelFlag = false;
+
+	float DropMeshTimer = 0.0f;
+	bool DropMeshFlag = false;
+
+	void ClipDrop();
+	void ShellDrop();
+	
+	void InitReload();
+	void FinishReload();
+	
+	void InitDropMesh(UStaticMesh* DropMesh, UArrowComponent* ArrowComponent, FTransform Offset,
+		FVector DropImpulsDirection, float LifeTimeMesh, float ImpulsRandomDispersion,
+		float PowerImpuls, float CustormMass);
 	
 	//Dispersion
 	bool ShouldReduceDispersion = false;
@@ -116,13 +132,7 @@ public:
 	
 	UFUNCTION(BlueprintCallable)
 	int32 GetWeaponRound();
-
-	void ClipDrop();
-	void ShellDrop();
 	
-	void InitReload();
-	void FinishReload();
-
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")
 	bool ShowDebug = false;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "Debug")

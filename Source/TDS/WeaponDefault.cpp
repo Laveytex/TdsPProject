@@ -33,13 +33,13 @@ AWeaponDefault::AWeaponDefault()
 	ShootLocation = CreateDefaultSubobject<UArrowComponent>(TEXT("ShootLocation"));
 	ShootLocation->SetupAttachment(RootComponent);
 
-	MagazineSpawnPoint = CreateDefaultSubobject<UArrowComponent>(TEXT("Magazin point"));
-	MagazineSpawnPoint->SetupAttachment(RootComponent);
-	MagazineSpawnPoint->SetArrowColor(FColor::Yellow);
+	ClipSpawnPoint = CreateDefaultSubobject<UArrowComponent>(TEXT("Magazin point"));
+	ClipSpawnPoint->SetupAttachment(RootComponent);
+	ClipSpawnPoint->SetArrowColor(FColor::Yellow);
 	
-	SleevBulletSpawnPoint = CreateDefaultSubobject<UArrowComponent>(TEXT("SleevBullet point"));
-	SleevBulletSpawnPoint->SetupAttachment(RootComponent);
-	SleevBulletSpawnPoint->SetArrowColor(FColor::Green);
+	ShellSpawnPoint = CreateDefaultSubobject<UArrowComponent>(TEXT("SleevBullet point"));
+	ShellSpawnPoint->SetupAttachment(RootComponent);
+	ShellSpawnPoint->SetArrowColor(FColor::Green);
 }
 
 // Called when the game starts or when spawned
@@ -202,10 +202,17 @@ void AWeaponDefault::Fire()
 	FireTimer = WeaponSetting.RateOfFire;
 	
 	ChangeDespersionByShot();
+
+	OnWeaponFireStart.Broadcast(AnimToPlay);
 	
 	UGameplayStatics::SpawnSoundAtLocation(GetWorld(), WeaponSetting.SoundFireWeapon, ShootLocation->GetComponentLocation());
-	UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), WeaponSetting.EffectFireWeapon, ShootLocation->GetComponentLocation(),
-		FRotator(ShootLocation->GetComponentRotation()));
+
+	if (WeaponSetting.EffectFireWeaponNi)
+		UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(), WeaponSetting.EffectFireWeaponNi,
+			ShootLocation->GetComponentLocation(), FRotator::ZeroRotator);
+	else if (WeaponSetting.EffectFireWeaponLeg)
+		UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), WeaponSetting.EffectFireWeaponLeg, ShootLocation->GetComponentLocation(),
+    		FRotator(ShootLocation->GetComponentRotation()));
 	
 	int8 NumberProjectile = GetNumberProjectileByShoot();
 	
@@ -261,7 +268,7 @@ void AWeaponDefault::Fire()
 				/*
 				bool Trace = GetWorld()->LineTraceSingleByChannel(HitResoult, SpawnLocation, EndLocation,
 					ECollisionChannel::ECC_Visibility, CollisionParams, FCollisionResponseParams());
-					*/
+				*/
 				
 				if (ProjectileInfo.ScanShootFX && HitResoult.IsValidBlockingHit())
 				{
@@ -284,15 +291,6 @@ void AWeaponDefault::Fire()
 					FLinearColor::Green,FLinearColor::Red, 0.5f);
 				}
 				
-				
-				//***************
-				/*UPhysicalMaterial* Pmat = HitResoult.PhysMaterial.Get();
-				AActor* Actor = HitResoult.GetActor();
-				bool Pmatd = HitResoult.PhysMaterial.IsValid();
-				UE_LOG(LogTemp, Warning, TEXT("AWeaponDefault::Fire  -Actor name: %s, Surface type: %i"), *Actor->GetName(), Pmatd);
-				//****************/
-				
-				
 				if (HitResoult.GetActor() && HitResoult.PhysMaterial.IsValid())
 				{					 
 					EPhysicalSurface mySurfacetype = UGameplayStatics::GetSurfaceType(HitResoult);
@@ -305,7 +303,7 @@ void AWeaponDefault::Fire()
 						{
 							UGameplayStatics::SpawnDecalAttached(myMaterial, FVector(20.0f),
 								HitResoult.GetComponent(), NAME_None, HitResoult.ImpactPoint, 
-								HitResoult.ImpactPoint.Rotation(),EAttachLocation::KeepWorldPosition, 10.0f);
+								HitResoult.Normal.Rotation(),EAttachLocation::KeepWorldPosition, 10.0f);
 						}
 					}
 					if (WeaponSetting.ProjectileSetting.HitFXLeg.Contains(mySurfacetype) || WeaponSetting.ProjectileSetting.HitFXNi.Contains(mySurfacetype))
@@ -331,16 +329,16 @@ void AWeaponDefault::Fire()
 			}
 		}
 	}
-	if(WeaponSetting.WeaponDrop.SheelMesh)
+	if(WeaponSetting.ShellDrop.DropMesh)
 	{
-		if (WeaponSetting.WeaponDrop.SheelDropTime < 0.0f)
+		if (WeaponSetting.ShellDrop.DropMeshTime < 0.0f)
 		{
 			ShellDrop();
 		}
 		else
 		{
 			DropSheelFlag = true;
-			DropSheelTimer = WeaponSetting.WeaponDrop.SheelDropTime;
+			DropSheelTimer = WeaponSetting.ShellDrop.DropMeshTime;
 		}
 	}
 }
@@ -479,79 +477,109 @@ int32 AWeaponDefault::GetWeaponRound()
 
 void AWeaponDefault::ClipDrop()
 {
-		FActorSpawnParameters SpawnParametrs;
-    	SpawnParametrs.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-    	SpawnParametrs.Owner = GetOwner();
-    	SpawnParametrs.Instigator = GetInstigator();
-    	
-    	FVector SpawnLocation = MagazineSpawnPoint->GetComponentLocation();
-    	FRotator SpawnRotation = MagazineSpawnPoint->GetComponentRotation();
-    	
-    	AStaticMeshActor* SpawnedMagazine = (GetWorld()->SpawnActor<AStaticMeshActor>
-    		(AStaticMeshActor::StaticClass(), SpawnLocation, SpawnRotation, SpawnParametrs));
-    	if (SpawnedMagazine)
-    	{
-    		SpawnedMagazine->SetMobility(EComponentMobility::Movable);
-    		UStaticMeshComponent* comp = SpawnedMagazine->GetStaticMeshComponent();
-    		comp->SetStaticMesh(WeaponSetting.WeaponDrop.ClipMesh);
-    		comp->SetSimulatePhysics(true);
-    		comp->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECR_Ignore);
-    	}
+	InitDropMesh(WeaponSetting.ClipDrop.DropMesh, ClipSpawnPoint, WeaponSetting.ClipDrop.DropMeshOffset,
+		WeaponSetting.ClipDrop.DropMeshImpulseDirection, WeaponSetting.ClipDrop.DropMeshLifeTime,
+		WeaponSetting.ClipDrop.ImpulseRandomDispersion, WeaponSetting.ClipDrop.PowerImpulse,
+		WeaponSetting.ClipDrop.CustomMass);
+}
+
+void AWeaponDefault::InitDropMesh(UStaticMesh* DropMesh, UArrowComponent* ArrowComponent, FTransform Offset,
+	FVector DropImpulsDirection, float LifeTimeMesh, float ImpulsRandomDispersion, float PowerImpuls, float CustormMass)
+{
+	FTransform Transform;
+
+	FVector locDirection = ArrowComponent->GetComponentLocation();
+	Transform.SetLocation(locDirection);
+	Transform.SetRotation(ArrowComponent->GetComponentRotation().Quaternion() + Offset.Rotator().Quaternion());
+
+
+	AStaticMeshActor* NewActor = nullptr;
+	
+	FActorSpawnParameters SpawnParameters;
+	SpawnParameters.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AdjustIfPossibleButAlwaysSpawn;
+	SpawnParameters.Owner = GetOwner();
+	SpawnParameters.Instigator = GetInstigator();
+	
+	NewActor = (GetWorld()->SpawnActor<AStaticMeshActor>
+		(AStaticMeshActor::StaticClass(), Transform.GetLocation(),
+			Transform.GetRotation().Rotator(), SpawnParameters));
+
+	if(NewActor && NewActor->GetStaticMeshComponent())
+	{
+		NewActor->InitialLifeSpan = LifeTimeMesh;
+		
+		NewActor->GetStaticMeshComponent()->SetRelativeScale3D(Offset.GetScale3D());
+		NewActor->GetStaticMeshComponent()->SetCollisionResponseToChannel
+			(ECollisionChannel::ECC_Pawn, ECR_Ignore);
+		NewActor->GetStaticMeshComponent()->SetMobility(EComponentMobility::Movable);
+		NewActor->GetStaticMeshComponent()->SetStaticMesh(DropMesh);
+		NewActor->GetStaticMeshComponent()->SetSimulatePhysics(true);
+		
+		if (CustormMass > 0.0f)
+		{
+			NewActor->GetStaticMeshComponent()->SetMassOverrideInKg(NAME_None, CustormMass, true);
+		}
+
+		//**Repair impuls
+		//***Add Direction
+		FVector finDirection;
+		finDirection = ArrowComponent->GetForwardVector();
+		NewActor->GetStaticMeshComponent()->AddImpulse(finDirection * PowerImpuls);
+		
+		if (!FMath::IsNearlyZero(ImpulsRandomDispersion))
+			{
+				finDirection += UKismetMathLibrary::RandomUnitVectorInConeInDegrees
+				(locDirection, ImpulsRandomDispersion);
+				//finDirection.GetSafeNormal(0.0001f);
+
+				NewActor->GetStaticMeshComponent()->AddImpulse(finDirection * PowerImpuls);
+			}
+		
+	}
 }
 
 void AWeaponDefault::ShellDrop()
 {
-			FActorSpawnParameters SpawnParametrs;
-			SpawnParametrs.SpawnCollisionHandlingOverride = ESpawnActorCollisionHandlingMethod::AlwaysSpawn;
-			SpawnParametrs.Owner = GetOwner();
-			SpawnParametrs.Instigator = GetInstigator();
-
-			FVector SpawnLocation = SleevBulletSpawnPoint->GetComponentLocation();
-			FRotator SpawnRotation = SleevBulletSpawnPoint->GetComponentRotation() + FRotator(0,0,-90);
-
-			float ImpulstMultiply;
-			ImpulstMultiply = FMath::FRandRange(2.0f,4.0f);
-		
-			FVector ForwardVector = SleevBulletSpawnPoint->GetForwardVector();
-
-			AStaticMeshActor* SleevBullet = (GetWorld()->SpawnActor<AStaticMeshActor>
-				(AStaticMeshActor::StaticClass(), SpawnLocation, SpawnRotation, SpawnParametrs));
-			if (SleevBullet)
-			{
-				SleevBullet->SetMobility(EComponentMobility::Movable);
-				SleevBullet->InitialLifeSpan = 1.0f;
-				SleevBullet->SetActorEnableCollision(true);
-			
-				UStaticMeshComponent* comp = SleevBullet->GetStaticMeshComponent();
-				if (comp)
-				{
-					comp->SetStaticMesh(WeaponSetting.WeaponDrop.SheelMesh);
-					comp->SetSimulatePhysics(true);
-					comp->AddImpulse(ForwardVector * ImpulstMultiply);
-					comp->SetCollisionResponseToChannel(ECollisionChannel::ECC_Pawn, ECR_Ignore);
-				}
-			}
+	InitDropMesh(WeaponSetting.ShellDrop.DropMesh, ShellSpawnPoint, WeaponSetting.ShellDrop.DropMeshOffset,
+	WeaponSetting.ShellDrop.DropMeshImpulseDirection, WeaponSetting.ShellDrop.DropMeshLifeTime,
+	WeaponSetting.ShellDrop.ImpulseRandomDispersion, WeaponSetting.ShellDrop.PowerImpulse,
+	WeaponSetting.ShellDrop.CustomMass);
 }
 
 void AWeaponDefault::InitReload()
 {
-	
+	UAnimMontage* AnimCharToPlay = nullptr;
+	UAnimMontage* AnimWeaponToPlay = nullptr;
 	
 	if (WeaponReloading == false)
 		{
-			if (WeaponSetting.WeaponAnimation.AnimCharReload)
-				OnWeaponReloadStart.Broadcast(WeaponSetting.WeaponAnimation.AnimCharReload);
-	
+			if (WeaponAiming)
+				AnimCharToPlay = WeaponSetting.WeaponAnimation.AnimCharReloadAim;
+			else
+				AnimCharToPlay = WeaponSetting.WeaponAnimation.AnimCharReload;
+		
+				OnWeaponReloadStart.Broadcast(AnimCharToPlay);
+		
+			if (WeaponAiming)
+				AnimWeaponToPlay = WeaponSetting.WeaponAnimation.AnimWeaponReloadAim;
+			else
+				AnimWeaponToPlay = WeaponSetting.WeaponAnimation.AnimWeaponReload;
+
+			if (WeaponSetting.WeaponAnimation.AnimCharReload && SkeletalMeshWeapon && SkeletalMeshWeapon->GetAnimInstance())
+			{
+				SkeletalMeshWeapon->GetAnimInstance()->Montage_Play(AnimWeaponToPlay);
+			}
+		
 					if (WeaponSetting.SoundReloadWeapon)
 						UGameplayStatics::SpawnSoundAtLocation(GetWorld(), WeaponSetting.SoundReloadWeapon,
 							ShootLocation->GetComponentLocation());
 					
 					ReloadTimer = WeaponSetting.ReloadTime;
 					
-					if(WeaponSetting.WeaponDrop.ClipMesh)
+					if(WeaponSetting.ClipDrop.DropMesh)
 					{
 						DropClipFlag = true;
-						DropClipTimer = WeaponSetting.WeaponDrop.ClipDropTime;
+						DropClipTimer = WeaponSetting.ClipDrop.DropMeshTime;
 					}
 		}
 	WeaponReloading = true;
@@ -564,4 +592,6 @@ void AWeaponDefault::FinishReload()
 
 	OnWeaponReloadEnd.Broadcast();
 }
+
+
 

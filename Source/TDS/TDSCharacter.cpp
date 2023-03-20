@@ -316,6 +316,8 @@ void ATDSCharacter::InitWeapon(FName IDWeaponName)
 
 					myWeapon->OnWeaponReloadStart.AddDynamic(this, &ATDSCharacter::WeaponReloadStart);
 					myWeapon->OnWeaponReloadEnd.AddDynamic(this, &ATDSCharacter::WeaponReloadEnd);
+
+					myWeapon->OnWeaponFireStart.AddDynamic(this, &ATDSCharacter::WeaponFireStart);
 				}
 			}
 			else
@@ -347,6 +349,16 @@ void ATDSCharacter::WeaponReloadStart(UAnimMontage* Anim)
 void ATDSCharacter::WeaponReloadEnd()
 {
 	WeaponReloadEnd_BP();
+}
+
+void ATDSCharacter::WeaponFireStart(UAnimMontage* Anim)
+{
+	WeaponFireStart_BP(Anim);
+}
+
+void ATDSCharacter::WeaponFireStart_BP_Implementation(UAnimMontage* Anim)
+{//inBP
+	
 }
 
 void ATDSCharacter::WeaponReloadStart_BP_Implementation(UAnimMontage* Anim)

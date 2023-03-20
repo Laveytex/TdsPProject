@@ -3,6 +3,7 @@
 
 #include "ProjectileDefault.h"
 
+#include "NiagaraFunctionLibrary.h"
 #include "Components/SphereComponent.h"
 #include "GameFramework/ProjectileMovementComponent.h"
 #include "Kismet/GameplayStatics.h"
@@ -31,8 +32,12 @@ AProjectileDefault::AProjectileDefault()
 	BulletMesh->SetupAttachment(RootComponent);
 	BulletMesh->SetCanEverAffectNavigation(false);
 	
-	BulletFX = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("Bullet FX"));
-	BulletFX->SetupAttachment(RootComponent);
+	BulletFXLeg = CreateDefaultSubobject<UParticleSystemComponent>(TEXT("BulletLeg FX"));
+	BulletFXLeg -> SetupAttachment(RootComponent);
+	
+	BulletFXNi = CreateDefaultSubobject<UNiagaraComponent>(TEXT("BulletNi FX"));
+	BulletFXNi->SetupAttachment(RootComponent);
+	
 
 	BulletProjectileMovement = CreateDefaultSubobject<UProjectileMovementComponent>(TEXT("Bullet Projectilemovement"));
 	BulletProjectileMovement->UpdatedComponent = RootComponent;
@@ -70,47 +75,51 @@ void AProjectileDefault::InitProjectile(FProjectileInfo InitParam)
 		BulletMesh->SetStaticMesh(InitParam.ProjectileStaticMesh);
 	else if(BulletMesh->GetStaticMesh() == nullptr)
 		BulletMesh->DestroyComponent();
-	if(InitParam.TrailFX)
-		BulletFX->SetTemplate(InitParam.TrailFX);
-	else if(BulletFX == nullptr)
-		BulletFX->DestroyComponent();
-		
 	
+	if(InitParam.TrailFXNi || InitParam.TrailFXLeg)
+	{
+		if (InitParam.TrailFXNi)
+			BulletFXNi->SetAsset(InitParam.TrailFXNi);
+		else
+			BulletFXLeg->SetTemplate(InitParam.TrailFXLeg);
+	}
+		
+	if(BulletFXLeg == nullptr)
+		BulletFXLeg->DestroyComponent();
+	if(BulletFXNi == nullptr)
+		BulletFXNi->DestroyComponent();
 }
 
 void AProjectileDefault::BulletCollisionSphereHit(UPrimitiveComponent* HitComp, AActor* OtherActor,
 						UPrimitiveComponent* OtherComp, FVector NormalImpulse, const FHitResult& Hit)
 {
-	UE_LOG(LogTemp, Warning, TEXT("Projectile::BulletCollisionSphereHit"))
-
-	//***************
-	UPhysicalMaterial* Pmat = Hit.PhysMaterial.Get();
-	AActor* Actor = Hit.GetActor();
-	bool Pmatd = Hit.PhysMaterial.IsValid();
-	UE_LOG(LogTemp, Warning, TEXT("ProjectileDefault::BulletCollisionSphereHit - Actor name: %s, Surface type: %i"), *Actor->GetName(), Pmatd);
-	//***************
-	
 	if (OtherActor && Hit.PhysMaterial.IsValid())
 	{
 		EPhysicalSurface mySurfacetype = UGameplayStatics::GetSurfaceType(Hit);
 		
-		if (ProjectileSetting.HitDecals.Contains(mySurfacetype))
-		{
-			UMaterialInterface* myMaterial = ProjectileSetting.HitDecals[mySurfacetype];
-
-			if (myMaterial && OtherComp)
+			if (ProjectileSetting.HitDecals.Contains(mySurfacetype))
 			{
-				UGameplayStatics::SpawnDecalAttached(myMaterial, FVector(20.0f), OtherComp, NAME_None,
-					Hit.ImpactPoint, Hit.Normal.Rotation(), EAttachLocation::KeepWorldPosition, 10.0f);
+				UMaterialInterface* myMaterial = ProjectileSetting.HitDecals[mySurfacetype];
+
+				if (myMaterial && OtherComp)
+					UGameplayStatics::SpawnDecalAttached(myMaterial, FVector(20.0f), OtherComp, NAME_None,
+						Hit.ImpactPoint, Hit.Normal.Rotation(), EAttachLocation::KeepWorldPosition, 10.0f);
 			}
-		}
-		if (ProjectileSetting.HitFXLeg.Contains(mySurfacetype))
+		if (ProjectileSetting.HitFXLeg.Contains(mySurfacetype) || ProjectileSetting.HitFXNi.Contains(mySurfacetype))
 		{
-			UParticleSystem* myParticle = ProjectileSetting.HitFXLeg[mySurfacetype];
-
-			if (myParticle)
+			if (!ProjectileSetting.HitFXNi.IsEmpty())
 			{
-				UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), myParticle, FTransform(Hit.ImpactNormal.Rotation(), Hit.ImpactPoint, FVector(1.0f)));	
+				UNiagaraSystem* myParticle = ProjectileSetting.HitFXNi[mySurfacetype];
+				if(myParticle)
+					UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
+						myParticle, Hit.ImpactPoint, FRotator::ZeroRotator);
+			}
+			
+			if (!ProjectileSetting.HitFXLeg.IsEmpty())
+			{
+				UParticleSystem* myParticle = ProjectileSetting.HitFXLeg[mySurfacetype];
+				if (myParticle)
+					UGameplayStatics::SpawnEmitterAtLocation(GetWorld(), myParticle, FTransform(Hit.ImpactNormal.Rotation(), Hit.ImpactPoint, FVector(1.0f)));
 			}
 		}
 	}
