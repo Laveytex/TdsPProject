@@ -96,6 +96,7 @@ public:
 	//flags
 	bool BlockFire = false;
 	bool WeaponAiming = false;
+	
 
 	//Weapon drops
 	float DropClipTimer = 0.0f;

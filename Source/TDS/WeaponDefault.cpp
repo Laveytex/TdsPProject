@@ -273,8 +273,14 @@ void AWeaponDefault::Fire()
 				if (ProjectileInfo.ScanShootFX && HitResoult.IsValidBlockingHit())
 				{
 					UNiagaraComponent* ShootFX = UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
-						ProjectileInfo.ScanShootFX, HitResoult.TraceStart, FRotator::ZeroRotator);
-					ShootFX->SetVectorParameter(FName (TEXT("EndPointLocation")), HitResoult.ImpactPoint);
+						ProjectileInfo.ScanShootFX, HitResoult.TraceStart, ShootLocation->GetComponentRotation());
+					
+					if (WeaponSetting.ProjectileSetting.isTraceEndLocation)
+					{
+						ShootFX->SetVectorParameter(FName (TEXT("EndPointLocation")), HitResoult.ImpactPoint);
+					}
+				
+					
 				}
 				
 				if (ProjectileInfo.HitSound && HitResoult.IsValidBlockingHit())
@@ -306,21 +312,22 @@ void AWeaponDefault::Fire()
 								HitResoult.Normal.Rotation(),EAttachLocation::KeepWorldPosition, 10.0f);
 						}
 					}
-					if (WeaponSetting.ProjectileSetting.HitFXLeg.Contains(mySurfacetype) || WeaponSetting.ProjectileSetting.HitFXNi.Contains(mySurfacetype))
+					if (WeaponSetting.ProjectileSetting.HitFXLeg.Contains(mySurfacetype) ||
+						WeaponSetting.ProjectileSetting.HitFXNi.Contains(mySurfacetype))
 					{
-						if (!WeaponSetting.ProjectileSetting.HitFXLeg.IsEmpty())
-						{
-							UParticleSystem* myParticle = WeaponSetting.ProjectileSetting.HitFXLeg[mySurfacetype];
-							if(myParticle)
-								UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),myParticle, FTransform
-									(HitResoult.ImpactNormal.Rotation(), HitResoult.ImpactPoint, FVector(1.0f)));
-						}
 						if (!WeaponSetting.ProjectileSetting.HitFXNi.IsEmpty())
 						{
 							UNiagaraSystem* myParticle = WeaponSetting.ProjectileSetting.HitFXNi[mySurfacetype];
 							if(myParticle)
 								UNiagaraFunctionLibrary::SpawnSystemAtLocation(GetWorld(),
 									myParticle, HitResoult.ImpactPoint, FRotator::ZeroRotator);
+						}
+						else 
+						{
+							UParticleSystem* myParticle = WeaponSetting.ProjectileSetting.HitFXLeg[mySurfacetype];
+							if(myParticle)
+								UGameplayStatics::SpawnEmitterAtLocation(GetWorld(),myParticle, FTransform
+									(HitResoult.ImpactNormal.Rotation(), HitResoult.ImpactPoint, FVector(1.0f)));
 						}
 					}
 				}

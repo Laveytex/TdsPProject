@@ -56,7 +56,8 @@ struct FProjectileInfo
 	UNiagaraSystem* TrailFXNi = nullptr;
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
 	UNiagaraSystem* ScanShootFX = nullptr;
-	
+	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
+	bool isTraceEndLocation = false;
 	
 	UPROPERTY(EditAnywhere, BlueprintReadWrite, Category = "ProjectileSetting")
 	TSubclassOf<class AProjectileDefault> Projectile = nullptr;

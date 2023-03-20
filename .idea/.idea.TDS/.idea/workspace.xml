@@ -6,32 +6,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/Blueprint/Character/Mannequins/Animations/Quinn/Aim/AM_Reload_Rifle_Ironsights.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/ABP_Assault_Rifle_B_Skeleton.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/Anims/AM_Fire_Rifle_W.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/Anims/AM_Prone_Reload_Rifle_W1.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/Anims/AM_Reload_Rifle_Ironsights_W1.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/Anims/Fire_Rifle_W1.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/Anims/Prone_Reload_Rifle_W1.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/Anims/Reload_Rifle_Ironsights_W1.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_LightBeam_EndLocation.uasset" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_ShootBeam_System_EndLocation.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Config/DefaultEngine.ini" beforeDir="false" afterPath="$PROJECT_DIR$/Config/DefaultEngine.ini" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/Mannequins/Animations/ABP_Manny.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/Mannequins/Animations/ABP_Manny.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/BP_Grenade.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_Grenade.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/BP_ProjectileDefoult.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_ProjectileDefoult.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/BP_WeaponDefault_Rifle.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/BP_WeaponDefault_Rifle.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/AssaultRifleB_Ammo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/AssaultRifleB_Ammo.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/Assault_Rifle_B_Skeleton.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Itam/GameActor/Weapon/MilitaryWeapDark/Weapons/Assault_Rifle_B_Skeleton.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_LightBeam_System.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_LightBeam_System.uasset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_ShootBeam_System.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_ShootBeam_System.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/WL/262BDHA66ZPHG6SC6N4B2E.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/6/WL/262BDHA66ZPHG6SC6N4B2E.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/C/9V/YB2Q1ML1MG0O1RQGLD2ITK.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/__ExternalActors__/Map/TopDownMap/C/9V/YB2Q1ML1MG0O1RQGLD2ITK.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/MainTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/MainTypes.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault.h" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/ProjectileDefault_Greanade.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/ProjectileDefault_Greanade.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/TDSCharacter.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/WeaponDefault.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/WeaponDefault.h" afterDir="false" />
     </list>
@@ -344,7 +326,7 @@
       <workItem from="1679143000557" duration="11618000" />
       <workItem from="1679212960880" duration="4439000" />
       <workItem from="1679225582403" duration="17382000" />
-      <workItem from="1679296645614" duration="1797000" />
+      <workItem from="1679296645614" duration="4473000" />
     </task>
     <servers />
   </component>
