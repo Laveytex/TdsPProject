@@ -6,16 +6,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_LightBeam_EndLocation.uasset" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_ShootBeam_System_EndLocation.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_LightBeam_System.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_LightBeam_System.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_ShootBeam_System.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_ShootBeam_System.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/MainTypes.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/MainTypes.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Source/TDS/WeaponDefault.h" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/WeaponDefault.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -326,7 +321,8 @@
       <workItem from="1679143000557" duration="11618000" />
       <workItem from="1679212960880" duration="4439000" />
       <workItem from="1679225582403" duration="17382000" />
-      <workItem from="1679296645614" duration="4473000" />
+      <workItem from="1679296645614" duration="4917000" />
+      <workItem from="1679400053939" duration="1420000" />
     </task>
     <servers />
   </component>

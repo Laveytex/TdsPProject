@@ -263,7 +263,8 @@ void AWeaponDefault::Fire()
 				DebugTrace = EDrawDebugTrace::None;
 				
 				UKismetSystemLibrary::LineTraceSingle(GetWorld(), SpawnLocation, EndLocation,
-					ETraceTypeQuery::TraceTypeQuery_MAX, false, IgnoredActor, DebugTrace, HitResoult, true, FLinearColor::Red,FLinearColor::Green, 5.0f);
+					ETraceTypeQuery::TraceTypeQuery_MAX, false, IgnoredActor, DebugTrace,
+					HitResoult, true, FLinearColor::Red,FLinearColor::Green, 5.0f);
 				
 				/*
 				bool Trace = GetWorld()->LineTraceSingleByChannel(HitResoult, SpawnLocation, EndLocation,
