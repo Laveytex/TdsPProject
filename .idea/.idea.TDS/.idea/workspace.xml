@@ -8,8 +8,6 @@
     <list default="true" id="3ed37d75-89b9-4814-a567-4a7387149ade" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.TDS/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Blueprint/Character/BP_Character.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_ShootBeam_System.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/FX_Effect/Particles/Beam/NI_ShootBeam_System.uasset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" beforeDir="false" afterPath="$PROJECT_DIR$/Content/Table/TD_WeaponInfo.uasset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/Source/TDS/WeaponDefault.cpp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -323,6 +321,17 @@
       <workItem from="1679225582403" duration="17382000" />
       <workItem from="1679296645614" duration="4917000" />
       <workItem from="1679400053939" duration="1420000" />
+      <workItem from="1679409444489" duration="2600000" />
+      <workItem from="1679487757762" duration="8268000" />
+      <workItem from="1679832683874" duration="4134000" />
+      <workItem from="1679925684820" duration="1930000" />
+      <workItem from="1679991050311" duration="1970000" />
+      <workItem from="1680094615292" duration="694000" />
+      <workItem from="1680684345810" duration="260000" />
+      <workItem from="1680781782672" duration="75000" />
+      <workItem from="1680783484682" duration="169000" />
+      <workItem from="1680786005432" duration="49000" />
+      <workItem from="1680786646774" duration="200000" />
     </task>
     <servers />
   </component>

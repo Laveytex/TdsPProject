@@ -188,11 +188,17 @@ bool AWeaponDefault::CheckWeaponCanFire()
 void AWeaponDefault::Fire()
 {
 	UAnimMontage* AnimToPlay = nullptr;
+	
 	if (WeaponAiming)
-		AnimToPlay = WeaponSetting.WeaponAnimation.AnimCharFireAim;
+	{
+		if(WeaponSetting.WeaponAnimation.AnimCharFireAim)
+			AnimToPlay = WeaponSetting.WeaponAnimation.AnimCharFireAim;
+	}
 	else
-		AnimToPlay = WeaponSetting.WeaponAnimation.AnimCharFire;
-
+	{
+		if(WeaponSetting.WeaponAnimation.AnimCharFire)
+			AnimToPlay = WeaponSetting.WeaponAnimation.AnimCharFire;
+	}
 	if (WeaponSetting.WeaponAnimation.AnimWeaponFire && SkeletalMeshWeapon
 		&& SkeletalMeshWeapon->GetAnimInstance())
 	{
@@ -530,6 +536,7 @@ void AWeaponDefault::InitDropMesh(UStaticMesh* DropMesh, UArrowComponent* ArrowC
 
 		//**Repair impuls
 		//***Add Direction
+		
 		FVector finDirection;
 		finDirection = ArrowComponent->GetForwardVector();
 		NewActor->GetStaticMeshComponent()->AddImpulse(finDirection * PowerImpuls);
@@ -562,16 +569,29 @@ void AWeaponDefault::InitReload()
 	if (WeaponReloading == false)
 		{
 			if (WeaponAiming)
-				AnimCharToPlay = WeaponSetting.WeaponAnimation.AnimCharReloadAim;
+			{
+				if(WeaponSetting.WeaponAnimation.AnimCharReloadAim)
+					AnimCharToPlay = WeaponSetting.WeaponAnimation.AnimCharReloadAim;
+			}
 			else
-				AnimCharToPlay = WeaponSetting.WeaponAnimation.AnimCharReload;
-		
+			{
+				if(WeaponSetting.WeaponAnimation.AnimCharReload)
+					AnimCharToPlay = WeaponSetting.WeaponAnimation.AnimCharReload;
+			}
 				OnWeaponReloadStart.Broadcast(AnimCharToPlay);
 		
 			if (WeaponAiming)
-				AnimWeaponToPlay = WeaponSetting.WeaponAnimation.AnimWeaponReloadAim;
+			{
+				if(WeaponSetting.WeaponAnimation.AnimWeaponReloadAim)
+					AnimWeaponToPlay = WeaponSetting.WeaponAnimation.AnimWeaponReloadAim;
+			}
+				
 			else
-				AnimWeaponToPlay = WeaponSetting.WeaponAnimation.AnimWeaponReload;
+			{
+				if(WeaponSetting.WeaponAnimation.AnimWeaponReload)
+					AnimWeaponToPlay = WeaponSetting.WeaponAnimation.AnimWeaponReload;
+			}
+				
 
 			if (WeaponSetting.WeaponAnimation.AnimCharReload && SkeletalMeshWeapon && SkeletalMeshWeapon->GetAnimInstance())
 			{
